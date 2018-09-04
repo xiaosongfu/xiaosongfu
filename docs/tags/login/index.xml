@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Login on xiaosongfu</title>
+    <link>https://xiaosongfu.com/tags/login/</link>
+    <description>Recent content in Login on xiaosongfu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 28 Apr 2018 13:59:45 +0000</lastBuildDate>
+    
+	<atom:link href="https://xiaosongfu.com/tags/login/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>快速登录 linux 服务器</title>
+      <link>https://xiaosongfu.com/archives/2018-04-28-login-linux-fast/</link>
+      <pubDate>Sat, 28 Apr 2018 13:59:45 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-04-28-login-linux-fast/</guid>
+      <description>目录  1、使用 alias 命令
+2、使用 ~/.ssh/config
+3、可选：配置免密码登录
+ 1、使用 alias 命令 使用 alias 命令为登录命令起一个简短的名字，如：
+alias 别名=`ssh 用户名@ip地址 -p 端口`  执行成功后直接在终端输入 别名 回车并输入密码即可登录。
+ 注意：
+* 要删除一个别名，可以使用 unalias 命令，如 unalias 别名。
+* alias 命令的作用只局限于该次登入的操作。若要每次登入都能够使用这些命令别名，则可将相应的 alias 命令存放到 bash 的初始化文件 /etc/bashrc 中。
+ 2、使用 ~/.ssh/config 编辑 ~/.ssh/config 文件，加入如下内容：
+Host 别名 Hostname ip地址 Port 端口 User 用户名  而配置好之后使用 ssh 别名 回车并输入密码即可登录。
+3、可选：配置免密码登录 使用前面的两种方式都需要输入密码，如果需要免密码登录只需要将本机生成的 rsa 公钥拷贝到服务器上即可。具体步骤如下：
+* 1、生成秘钥
+ssh-keygen -t rsa  生成的密钥在 ~/.</description>
+    </item>
+    
+  </channel>
+</rss>

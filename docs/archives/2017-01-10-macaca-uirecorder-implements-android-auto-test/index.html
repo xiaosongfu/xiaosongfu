@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico?cb=150118" type="image/x-icon">
+<link rel="alternate" href="/index.xml" type="application/rss+xml" title="xiaosongfu">
+<title>Macaca &#43; uirecorder 实现 Android 自动化测试 - xiaosongfu</title>
+</head>
+<body>
+
+<div class="container">
+
+  <header role="banner">
+    <div class="row">
+      <a href="/" class="site-title">xiaosongfu</a>
+      <a href="/about/" class="site-about">About</a>
+    </div>
+  </header>
+
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <div class="entry-header">
+        <div class="bubble bubble-macaca"></div>
+        <h1 class="entry-title" itemprop="headline">Macaca &#43; uirecorder 实现 Android 自动化测试</h1>
+        <span class="entry-meta"><time itemprop="datePublished" datetime="2017-01-10">2017-01-10 13:23:14</time> <a href="/categories/macaca">#macaca</a></span>
+      </div>
+      <section itemprop="text">
+        
+
+<h2 id="目录">目录</h2>
+
+<blockquote>
+<p>1、安装 Macaca<br />
+2、安装 uirecorder<br />
+3、测试</p>
+</blockquote>
+
+<p>Macaca 和 uirecorder 都是基于 Node.js 开发的，所以安装它们之前需要先安装 Node 环境，并且建议将 npm 源切换到国内，比如淘宝 npm 源。后文都是使用淘宝的 npm 源。<br />
+Macaca GitHub：<a href="https://github.com/alibaba/macaca">alibaba macaca</a><br />
+Macaca Home：<a href="https://macacajs.com/zh/">macacajs</a><br />
+uirecorder GitHub：<a href="https://github.com/alibaba/uirecorder">alibaba uirecorder</a></p>
+
+<h3 id="1-安装-macaca">1、安装 Macaca</h3>
+
+<p>先安装 Macaca，为了实现 Android 的自动化测试，还需要安装 Macaca 的 Android 驱动，命令：</p>
+
+<pre><code>cnpm install -g macaca-cli  
+cnpm install -g macaca-android  
+</code></pre>
+
+<p>Macaca 还有其他平台的驱动，如 iOS 的驱动：npm install -g macaca-ios ，Chrome 的驱动：npm install -g macaca-chrome</p>
+
+<p>安装完成之后检查一下是否安装成功，运行命令：</p>
+
+<pre><code>macaca doctor
+</code></pre>
+
+<p>运行结果如下，即表示安装成功。注意：环境变量的值跟具体的设置有关</p>
+
+<pre><code>C:\Users\xiaos&gt;macaca doctor
+
+  macaca-doctor version: 1.0.28
+
+
+  Node.js checklist:
+
+  node env: C:\Program Files\nodejs\node.exe
+  node version: v4.6.0
+
+  Android checklist:
+
+  JAVA version is `1.8.0_101`
+  JAVA_HOME is set to `C:\Program Files\Java\jdk1.8.0_101`
+  ANDROID_HOME is set to `C:\work\android\sdk`
+  Platforms is set to `C:\work\android\sdk\platforms\android-24`
+  Android tools is set to `C:\work\android\sdk\tools\android.bat`
+  ADB tool is set to `C:\work\android\sdk\platform-tools\adb.exe`
+  ANT_HOME is set to `C:\work\apache-ant-1.9.7`
+
+  Installed driver list:
+
+  android: 1.1.15
+</code></pre>
+
+<h3 id="2-安装-uirecorder">2、安装 uirecorder</h3>
+
+<p>运行命令安装 uirecorder 和 mocha ：</p>
+
+<pre><code>npm install -g uirecorder mocha
+</code></pre>
+
+<p>安装完成之后运行 uirecorder &ndash;version 命令查看 uirecorder 版本信息，如下即表示安装成功：</p>
+
+<pre><code>C:\Users\xiaos&gt;uirecorder --version
+    __  ______   ____                           __
+   / / / /  _/  / __ \___  _________  _________/ /__  _____
+  / / / // /   / /_/ / _ \/ ___/ __ \/ ___/ __  / _ \/ ___/
+ / /_/ // /   / _, _/  __/ /__/ /_/ / /  / /_/ /  __/ /
+ \____/___/  /_/ |_|\___/\___/\____/_/   \__,_/\___/_/    v2.3.23
+
+------------------------------------------------------------------
+
+2.3.23
+
+C:\Users\xiaos&gt;
+</code></pre>
+
+<h3 id="3-测试">3、  测试</h3>
+
+<h4 id="3-1-初始化测试项目">3.1 初始化测试项目</h4>
+
+<pre><code>uirecorder init --mobile
+npm install
+</code></pre>
+
+<p>使用 npm install 安装 uirecorder 项目的依赖模块。</p>
+
+<h4 id="3-2-启动-macaca-服务">3.2 启动 Macaca 服务</h4>
+
+<pre><code>macaca server --port 4444
+</code></pre>
+
+<h4 id="3-3-启动-uirecorder-录制测试脚本">3.3 启动 uirecorder 录制测试脚本</h4>
+
+<pre><code>uirecorder start --mobile
+</code></pre>
+
+<h4 id="3-4-使用录制的测试脚本进行测试">3.4 使用录制的测试脚本进行测试</h4>
+
+<pre><code>mocha test.spec.js
+</code></pre>
+
+      </section>
+      <div class="share">
+        <a href="https://twitter.com/share?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2017-01-10-macaca-uirecorder-implements-android-auto-test%2f&text=Macaca%20%2b%20uirecorder%20%e5%ae%9e%e7%8e%b0%20Android%20%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="twitter">
+          <img src="/assets/fonts/twitter.svg" width="18" height="18">
+        </a>
+        <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fxiaosongfu.com%2farchives%2f2017-01-10-macaca-uirecorder-implements-android-auto-test%2f" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="facebook">
+          <img src="/assets/fonts/facebook.svg" width="18" height="18">
+        </a>
+        <a href="https://getpocket.com/edit?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2017-01-10-macaca-uirecorder-implements-android-auto-test%2f&title=Macaca%20%2b%20uirecorder%20%e5%ae%9e%e7%8e%b0%20Android%20%e8%87%aa%e5%8a%a8%e5%8c%96%e6%b5%8b%e8%af%95" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,scrollbars=yes,height=300,width=600');return false;" class="pocket">
+          <img src="/assets/fonts/pocket.svg" width="18" height="18">
+        </a>
+      </div>
+    </article>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+         
+        var disqus_shortname = 'xiaosongfu'; 
+
+         
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </main>
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+</script>
+
+</body>
+</html>
+

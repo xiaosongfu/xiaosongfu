@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico?cb=150118" type="image/x-icon">
+<link rel="alternate" href="/index.xml" type="application/rss+xml" title="xiaosongfu">
+<title>go module - xiaosongfu</title>
+</head>
+<body>
+
+<div class="container">
+
+  <header role="banner">
+    <div class="row">
+      <a href="/" class="site-title">xiaosongfu</a>
+      <a href="/about/" class="site-about">About</a>
+    </div>
+  </header>
+
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <div class="entry-header">
+        <div class="bubble bubble-go"></div>
+        <h1 class="entry-title" itemprop="headline">go module</h1>
+        <span class="entry-meta"><time itemprop="datePublished" datetime="2018-08-27">2018-08-27 16:52:24</time> <a href="/categories/go">#go</a></span>
+      </div>
+      <section itemprop="text">
+        
+
+<h2 id="目录">目录</h2>
+
+<blockquote>
+</blockquote>
+
+<p><code>go help mod</code>、 <code>go help modules</code>、 <code>go help module-get</code></p>
+
+<p>go mod init go.xiaosongfu.com/link</p>
+
+<p>go build</p>
+
+<p>go get -u</p>
+
+<p>go mod tidy</p>
+
+<p>·</p>
+
+<h3 id="常用的-go-mod-命令">常用的 go mod 命令</h3>
+
+<p>把常用的 go mod 命令罗列一下：</p>
+
+<ul>
+<li>go mod init: 初始化 modules</li>
+<li>go mod download: 下载所需要的依赖，但是依赖并不是下载到 $GOPATH中，而是 $GOPATH/pkg/mod中，多个项目可以共享缓存的 module。</li>
+<li>go mod edit: 编辑 go.mod 文件，选项有 - json、-require 和 - exclude，可以使用帮助 go help mod edit</li>
+<li>go mod graph: 以文本模式打印模块需求图</li>
+<li>go mod tidy: 删除错误或者不使用的 modules</li>
+<li>go mod vendor: 生成 vendor 目录，并将 modules 下载到 vendor 中</li>
+<li>go mod verify: 验证依赖是否正确</li>
+<li>go mod why：查找依赖</li>
+</ul>
+
+<ol>
+<li>翻墙
+在国内访问 golang.org/x的各个包都需要翻墙，你可以在 go.mod中使用 replace 替换成 github 上对应的库。</li>
+</ol>
+
+<pre><code>replace (
+     golang . org / x / crypto v0 . 0.0 - 20180820150726 - 614d502a4dac =&gt; github . com / golang / crypto v0 . 0.0 - 20180820150726 - 614d502a4dac golang . org / x / net v0 . 0.0 - 20180821023952 - 922f4815f713 =&gt; github . com / golang / net v0 . 0.0 - 20180826012351 - 8a410e7b638d 
+     golang . org / x / text v0 . 3.0 =&gt; github . com / golang / text v0 . 3.0
+ )
+</code></pre>
+
+<p>依赖库中的 replace 对你的主 go.mod 不起作用，比如 github.com/smallnest/rpcx的 go.mod 已经增加了 replace, 但是你的 go.mod 虽然 require 了 rpcx 的库，但是没有设置 replace 的话， go get 还是会访问 golang.org/x。</p>
+
+<p>所以如果想编译那个项目，就在哪个项目中增加 replace。</p>
+
+<ol>
+<li>版本格式
+下面的版本都是合法的：
+<code>
+gopkg . in / tomb . v1 v1 . 0.0 - 20141024135613 - dd632973f1e7 
+gopkg . in / vmihailenco / msgpack . v2 v2 . 9.1 
+gopkg . in / yaml . v2 &lt;= v2 . 2.1 
+github . com / tatsushid / go - fastping v0 . 0.0 - 20160109021039 - d7bb493dee3e 
+latest
+</code></li>
+</ol>
+
+<h3 id="go-mod-与-go-get">go mod 与 go get</h3>
+
+<p>go get这个命令大家应该不会陌生，这是下载go依赖包的根据，下载Go 1.11出来了，go get命令也与时俱进，支持了modules。 go get 来更新 module:</p>
+
+<ul>
+<li>运行 go get -u 将会升级到最新的次要版本或者修订版本</li>
+<li>运行 go get -u=patch 将会升级到最新的修订版本（比如说，将会升级到 1.0.1 版本，但不会升级到 1.1.0 版本）</li>
+<li>运行 go get package@version将会升级到指定的版本号</li>
+</ul>
+
+<p>运行go get如果有版本的更改，那么go.mod文件也会更改。</p>
+
+<p>Vendor 机制
+默认情况下，Go modules 会忽略 vendor/ 目录。这个想法是最终废除掉 vendor 机制[^1]。但如果我们仍然想要在我们的版本管理中添加 vendor 机制管理依赖，我们还是可以这么做的：</p>
+
+<p>$ go mod vendor</p>
+
+<p>这会在你项目的根目录创建一个 vendor/目录，并包含你的项目的所有依赖项。</p>
+
+<p>即使如此，go build 默认还是会忽略这个目录的内容，如果你想要构建的时候从 vendor/ 目录中获取依赖的代码来构建，那么你需要明确的指示：</p>
+
+<p>$ go build -mod vendor</p>
+
+<p>go.mod文件可以通过require，replace和exclude语句使用的精确软件包集。</p>
+
+<p>require语句指定的依赖项模块
+replace语句可以替换依赖项模块
+exclude语句可以忽略依赖项模块</p>
+
+      </section>
+      <div class="share">
+        <a href="https://twitter.com/share?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-08-27-go-module%2f&text=go%20module" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="twitter">
+          <img src="/assets/fonts/twitter.svg" width="18" height="18">
+        </a>
+        <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-08-27-go-module%2f" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="facebook">
+          <img src="/assets/fonts/facebook.svg" width="18" height="18">
+        </a>
+        <a href="https://getpocket.com/edit?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-08-27-go-module%2f&title=go%20module" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,scrollbars=yes,height=300,width=600');return false;" class="pocket">
+          <img src="/assets/fonts/pocket.svg" width="18" height="18">
+        </a>
+      </div>
+    </article>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+         
+        var disqus_shortname = 'xiaosongfu'; 
+
+         
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </main>
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+</script>
+
+</body>
+</html>
+

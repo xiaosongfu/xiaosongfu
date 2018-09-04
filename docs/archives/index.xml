@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Archives on xiaosongfu</title>
+    <link>https://xiaosongfu.com/archives/</link>
+    <description>Recent content in Archives on xiaosongfu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 03 Sep 2018 11:44:34 +0800</lastBuildDate>
+    
+	<atom:link href="https://xiaosongfu.com/archives/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Athens Simple Use</title>
+      <link>https://xiaosongfu.com/archives/2018-09-03-athens-simple-use/</link>
+      <pubDate>Mon, 03 Sep 2018 11:44:34 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-09-03-athens-simple-use/</guid>
+      <description>目录  1、本地简单试用 Athens Proxy 2、使用 Docker 部署 Athens Proxy 3、Athens 架构
+ 1、本地简单试用 Athens Proxy 需要确保安装了 go1.11，并且将 $GOPATH/bin 添加到了环境变量，接下来使用 go 工具链安装并运行 Athens proxy
+# 安装 $ go get -u github.com/gomods/athens/cmd/proxy # 运行 Athens proxy $ proxy &amp;amp; [1] 25243 INFO[0000] Starting application at 127.0.0.1:3000  接下来，需要启用 Go Module 功能并配置 Go 使用代理
+export GO111MODULE=on export GOPROXY=http://127.0.0.1:3000   注：启用 Go Module 功能的方法有多种，设置 GO111MODULE=on 环境变量只是一种方法，更多的细节自行了解。
+ 现在，就可以构建并运行 walkthrough 项目，go 命令将会通过 Athens proxy 获取依赖</description>
+    </item>
+    
+    <item>
+      <title>Drone</title>
+      <link>https://xiaosongfu.com/archives/2018-08-27-drone/</link>
+      <pubDate>Mon, 27 Aug 2018 17:17:07 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-08-27-drone/</guid>
+      <description>如何製作 Docker 映像檔並且自動上傳到 Docker Hub 如何將 Drone 導入團隊取代傳統 Jenkins 服務 如何用其他語言撰寫 Plugin 整合進 Drone 服務 如何用 Drone 整合團隊部署測試流程 (如下圖)</description>
+    </item>
+    
+    <item>
+      <title>go module</title>
+      <link>https://xiaosongfu.com/archives/2018-08-27-go-module/</link>
+      <pubDate>Mon, 27 Aug 2018 16:52:24 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-08-27-go-module/</guid>
+      <description>目录   go help mod、 go help modules、 go help module-get
+go mod init go.xiaosongfu.com/link
+go build
+go get -u
+go mod tidy
+·
+常用的 go mod 命令 把常用的 go mod 命令罗列一下：
+ go mod init: 初始化 modules go mod download: 下载所需要的依赖，但是依赖并不是下载到 $GOPATH中，而是 $GOPATH/pkg/mod中，多个项目可以共享缓存的 module。 go mod edit: 编辑 go.mod 文件，选项有 - json、-require 和 - exclude，可以使用帮助 go help mod edit go mod graph: 以文本模式打印模块需求图 go mod tidy: 删除错误或者不使用的 modules go mod vendor: 生成 vendor 目录，并将 modules 下载到 vendor 中 go mod verify: 验证依赖是否正确 go mod why：查找依赖   翻墙 在国内访问 golang.</description>
+    </item>
+    
+    <item>
+      <title>安装 kubeadm</title>
+      <link>https://xiaosongfu.com/archives/2018-08-17-install-kubeadm/</link>
+      <pubDate>Fri, 17 Aug 2018 11:52:24 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-08-17-install-kubeadm/</guid>
+      <description>目录  1、安装 Docker 2、安装 kubeadm, kubelet 和 kubectl 3、用 kubeadm 创建 Cluster 4、配置 kubectl 5、安装 pod 网络附加组件 6、添加 Node 节点 7、重置安装
+本文以 Centos 7 为例。
+ 1、安装 Docker Centos 系统上安装：Get Docker CE for CentOS
+使用如下命令安装 17.03 版本的 Docker：
+[root@VM_0_3_centos ~]# yum install -y yum-utils \ device-mapper-persistent-data \ lvm2 [root@VM_0_3_centos ~]# yum-config-manager \ --add-repo \ https://download.docker.com/linux/centos/docker-ce.repo [root@VM_0_3_centos ~]# yum list docker-ce --showduplicates | sort -r 已加载插件：fastestmirror, langpacks 可安装的软件包 Loading mirror speeds from cached hostfile docker-ce.</description>
+    </item>
+    
+    <item>
+      <title>主流操作系统安装 Kubectl</title>
+      <link>https://xiaosongfu.com/archives/2018-08-16-install-kubectl/</link>
+      <pubDate>Thu, 16 Aug 2018 11:07:23 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-08-16-install-kubectl/</guid>
+      <description>目录  1、使用包管理器安装 (Install kubectl binary via native package management)
+2、使用 curl 安装 (Install kubectl binary via curl) 3、使用 Google Cloud SDK 安装 (Download as part of the Google Cloud SDK) 4、配置 shell 终端自动补齐命令 (Enabling shell autocompletion)
+ 参考 Kubernetes 官网文档：Install and Set Up kubectl
+1、使用包管理器安装 (Install kubectl binary via native package management) Linux 系统上使用包管理器安装  Ubuntu,Debian or HypriotOS
+ sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install -y apt-transport-https curl -s https://packages.</description>
+    </item>
+    
+    <item>
+      <title>Unison 简单使用</title>
+      <link>https://xiaosongfu.com/archives/2018-08-07-unison-simple-use/</link>
+      <pubDate>Tue, 07 Aug 2018 15:39:31 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-08-07-unison-simple-use/</guid>
+      <description>下载安装 OCaml 语言的编译器 http://ocaml.org/docs/install.html
+yum install ocaml  下载 unison 源码并编译安装 下载 unison 源码
+https://github.com/bcpierce00/unison/releases
+wget https://github.com/bcpierce00/unison/archive/v2.51.2.zip  编译安装
+http://www.seas.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html#building
+make UISTYLE=text make install  如果 make install 命令报错，如下:
+[root@host unison-2.51.2]# make install (cd src; make install) make[1]: 进入目录“/root/unison-2.51.2/src” UISTYLE = text Building for Unix NATIVE = true THREADS = false STATIC = false OSTYPE = OSARCH = Linux mv /root/bin//unison /tmp/unison-1473 mv: 无法获取&amp;quot;/root/bin//unison&amp;quot; 的文件状态(stat): 没有那个文件或目录 make[1]: [doinstall] 错误 1 (忽略) cp unison /root/bin/ cp: 无法创建普通文件&amp;quot;/root/bin/&amp;quot;: 不是目录 make[1]: *** [doinstall] 错误 1 make[1]: 离开目录“/root/unison-2.</description>
+    </item>
+    
+    <item>
+      <title>Caddy 简单实用</title>
+      <link>https://xiaosongfu.com/archives/2018-08-06-caddy-simple-use/</link>
+      <pubDate>Mon, 06 Aug 2018 15:55:18 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-08-06-caddy-simple-use/</guid>
+      <description> 目录  1、安装
+2、创建配置文件
+ 安装 [root@JD ~]# curl https://getcaddy.com | bash -s personal  创建相关目录
+[root@JD ~]# mkdir /etc/caddy [root@JD ~]# mkdir /etc/ssl/caddy [root@JD ~]# mkdir /var/log/caddy  创建配置文件 [root@JD ~]# vi /etc/caddy/Caddyfile  启动服务 [root@JD ~]# caddy -conf /etc/caddy/Caddyfile  </description>
+    </item>
+    
+    <item>
+      <title>supervisor 简单使用</title>
+      <link>https://xiaosongfu.com/archives/2018-08-06-supervisor-simple-use/</link>
+      <pubDate>Mon, 06 Aug 2018 10:44:45 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-08-06-supervisor-simple-use/</guid>
+      <description>目录  1、安装
+2、创建配置文件
+ Supervisor 是用在类 UNIX 操作系统上控制进程的 C/S 系统。它具有很多的功能特点：
+ 简单 Supervisor 使用 INI 样式（a simple INI-style config file）的配置文件，简单易学。它提供了很多的选型让你可以很容易的重启失败的进程，并有自动切割日志的功能。
+ 集中化 Supervisor
+  Supervisor 可用于 Ubuntu，Solaris，FreebSD,macOS等，也适用于类 UNIX 操作系统。但它不支持 Windows 系统。 Supervisor 使用 Python 2.4，使用 Python 3 可能不能很好的工作。
+安装 使用 easy_install 安装 easy_install supervisor  使用 pip 安装 pip install supervisor  创建配置文件 supervisor 安装完成后，运行 echo_supervisord_conf 命令，可以在终端打印出配置文件示例，之后使用 echo_supervisord_conf &amp;gt; /etc/supervisor/supervisord.conf 命令创建配置文件。(需要提前创建 /etc/supervisor/ 目录)
+结果如下：
+[root@JD link]# ls /etc/supervisor/ supervisord.</description>
+    </item>
+    
+    <item>
+      <title>Rclone 简单使用</title>
+      <link>https://xiaosongfu.com/archives/2018-07-31-rclone-simple-use/</link>
+      <pubDate>Tue, 31 Jul 2018 16:28:05 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-07-31-rclone-simple-use/</guid>
+      <description>目录  1、安装
+2、简单使用
+3、在 Linux 服务器之间同步文件
+ 官网：https://rclone.org
+1、安装 安装方式有两种：
+ 方式一：
+ 根据操作系统在官网下载对应 arch 包并解压即可得到可执行文件。
+ 方式二：
+ 直接执行 shell 脚本，自动下载安装
+curl https://rclone.org/install.sh | sudo bash  2、简单使用  配置云盘/服务器  rclone config   列出某目录下的所有目录  rclone lsd remote:/path/to/directory   列出某目录下的所有内容  rclone ls remote:/path/to/directory   创建目录  rclone mkdir remote:/path/to/directory   同步文件夹/文件  rclone sync /home/local/directory remote:/path/to/directory  3、在 Linux 服务器之间同步文件 同步文件夹使用 rclone sync，比如：</description>
+    </item>
+    
+    <item>
+      <title>主流操作系统安装 Minikube</title>
+      <link>https://xiaosongfu.com/archives/2018-07-13-install-minikube/</link>
+      <pubDate>Fri, 13 Jul 2018 11:42:21 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-07-13-install-minikube/</guid>
+      <description>目录  1、macOS 系统安装 Minikube
+2、Linux 系统安装 Minikube
+ Minikube Github：https://github.com/kubernetes/minikube
+Minikube Github Release：https://github.com/kubernetes/minikube/releases
+ 本文整理自 https://github.com/kubernetes/minikube/releases *  macOS 系统安装 Minikube 有两种安装方式:
+ 方式一: 使用 brew 安装：
+ brew cask install minikube   方式二: 直接下载
+ curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.28.0/minikube-darwin-amd64 &amp;amp;&amp;amp; chmod +x minikube &amp;amp;&amp;amp; sudo mv minikube /usr/local/bin/  这个命令包含三个部分：
+ curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.28.0/minikube-darwin-amd64 =&amp;gt; 下载 minikube-darwin-amd64 并重命名为 minikube
+ chmod +x minikube =&amp;gt; 给 minikube 赋予执行权限 mv minikube /usr/local/bin/ =&amp;gt; 将 minikube 移动到 /usr/local/bin/ 目录下，这一步是可选的，你也可以直接手动将 minikube 的路径添加到系统的环境变量  fuxiaosongdeMac-mini:~ fuxiaosong$ minikube Minikube is a CLI tool that provisions and manages single-node Kubernetes clusters optimized for development workflows.</description>
+    </item>
+    
+    <item>
+      <title>安装 Flutter SDK</title>
+      <link>https://xiaosongfu.com/archives/2018-07-06-install-fllutter-sdk/</link>
+      <pubDate>Fri, 06 Jul 2018 10:17:34 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-07-06-install-fllutter-sdk/</guid>
+      <description>The Flutter SDK includes Flutter’s engine, framework, widgets, tools, and a Dart SDK.
+Flutter SDK 包括 Flutter 的引擎、框架、widgets、工具和 Dart SDK。
+ 以 macOS 系统为例
+ 1、配置国内的镜像站点 国内用户建议配置一个与官方同步的可信的镜像站点，帮助 Flutter 命令行工具到该镜像站点下载其所需的资源，来加速安装和使用，为此需要设置两个环境变量：“PUB_HOSTED_URL”和“FLUTTER_STORAGE_BASE_URL”，然后再运行 Flutter 命令行工具。配置方法如下：
+export PUB_HOSTED_URL=https://pub.flutter-io.cn export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn  目前可用的镜像站点有两个：
+ 上海交通大学 Linux 用户组
+FLUTTER_STORAGE_BASE_URL: https://mirrors.sjtug.sjtu.edu.cn
+PUB_HOSTED_URL: https://dart-pub.mirrors.sjtug.sjtu.edu.cn
+ Flutter 社区
+FLUTTER_STORAGE_BASE_URL: https://storage.flutter-io.cn
+PUB_HOSTED_URL: https://pub.flutter-io.cn
+  更多信息请翻阅：Using Flutter in China | Flutter 社区中文资源-使用镜像
+2、安装 Flutter SDK 安装方式有两种，一种是直接 clone 官方仓库 git clone -b beta https://github.</description>
+    </item>
+    
+    <item>
+      <title>安装 Dartlang</title>
+      <link>https://xiaosongfu.com/archives/2018-06-26-install-dartlang/</link>
+      <pubDate>Tue, 26 Jun 2018 17:54:31 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-06-26-install-dartlang/</guid>
+      <description>The Dart SDK has the libraries and command-line tools that you need to develop Dart apps.（Dart SDK 包含开发 Dart 应用需要用到的库(libraries) 和 命令行工具(command-line tools)）
+ 有两种安装方式：
+1. 使用操作系统的包管理工具直接安装，如 brew install dart，简单方便，具体请参考：https://www.dartlang.org/tools/sdk
+2. 下载 archive 包解压并配置好环境变量即可，具体请参考：https://www.dartlang.org/tools/sdk/archive
+ 以 macOS 系统为例
+ 1. 方式一 使用系统包管理工具安装 使用 homebrew 安装，需要安装 dart 自己的仓库，然后才能使用 brew install dart 来安装：
+$ brew tap dart-lang/dart $ brew install dart  使用 --devel 参数安装 dev channel：
+$ brew install dart --devel   更新版本使用：brew upgrade dart</description>
+    </item>
+    
+    <item>
+      <title>安装 Golang</title>
+      <link>https://xiaosongfu.com/archives/2018-06-26-install-golang/</link>
+      <pubDate>Tue, 26 Jun 2018 17:54:16 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-06-26-install-golang/</guid>
+      <description>安装 golang 十分的简单，只需要下载 archive 包，解压，设置 GOROOT 和 GOPATH 环境变量，并将它们的 bin 目录添加到系统 PATH 环境变量即可。
+ 以 Linux 系统为例，安装 1.10.2 版本(已使用 root 用户登录服务器)
+ 1.创建保存 golang 的目录 mkdir -p /root/dev/go/gopath cd /root/dev/go  创建 go 和 go/gopath 目录，安装完成后的目录结构会是这样的：
+[root@JD ~]# tree -L 4 . └── dev └── go ├── go │ ├── api │ ├── AUTHORS │ ├── bin │ ├── blog │ ├── CONTRIBUTING.md │ ├── CONTRIBUTORS │ ├── doc │ ├── favicon.</description>
+    </item>
+    
+    <item>
+      <title>logrus 日志打印库 (2) 使用HOOK</title>
+      <link>https://xiaosongfu.com/archives/2018-06-12-golang-logrus-2-use-hook/</link>
+      <pubDate>Tue, 12 Jun 2018 14:41:20 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-06-12-golang-logrus-2-use-hook/</guid>
+      <description>目录  1、使用 HOOK 输出到日志文件
+2、使用 HOOK 输出到日志文件并实现切割功能
+3、使用 HOOK 输出到 ElasticSearch
+4、使用 HOOK 实现通知 beachat 机器人
+ 1、使用 HOOK 输出到日志文件 输出到日志文件需要借助 lfshook hook库。使用方法很简单，可以配置日志格式，可以为不同级别的日志指定不同的日志文件。godoc 截图如下： 指定日志文件可以通过传递文件路径或者 writer。示例： &amp;gt; 方式一：指定日志文件路径
+const logFile1 = &amp;quot;log/logrus/filelog1.log&amp;quot; logger1 := logrus.New() lfsHook := lfshook.NewHook(lfshook.PathMap{ logrus.DebugLevel: logFile1, logrus.InfoLevel: logFile1, logrus.WarnLevel: logFile1, logrus.ErrorLevel: logFile1, logrus.FatalLevel: logFile1, logrus.PanicLevel: logFile1, }, &amp;amp;logrus.TextFormatter{}) logger1.AddHook(lfsHook) logger1.Debug(&amp;quot;file log text-debug&amp;quot;) logger1.Info(&amp;quot;file log text-info&amp;quot;)   方式二：指定 file writer
+const logFile2 = &amp;quot;log/logrus/filelog2.log&amp;quot; logger2 := logrus.</description>
+    </item>
+    
+    <item>
+      <title>logrus 日志打印库 (1) 简单使用</title>
+      <link>https://xiaosongfu.com/archives/2018-06-12-golang-logrus-1-simple-use/</link>
+      <pubDate>Tue, 12 Jun 2018 14:33:40 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-06-12-golang-logrus-1-simple-use/</guid>
+      <description>目录  1、简介
+2、简单使用
+3、基本使用
+4、API 概览
+5、参考文章
+ 1、简介 logrus 是结构化的，与 golang 标准库完全兼容的 golang 日志打印框架。支持 Filed 和 HOOK 机制，自带 text 和 json 两种日志输出格式。
+2、简单使用 最简单的方法就是直接使用包级暴露的打印方法。直接上代码：
+package main import &amp;quot;github.com/sirupsen/logrus&amp;quot; func main() { logrus.WithFields(logrus.Fields{ &amp;quot;animal&amp;quot;: &amp;quot;walrus&amp;quot;, &amp;quot;number&amp;quot;: 1, &amp;quot;size&amp;quot;: 10, }).Info(&amp;quot;A walrus appears&amp;quot;) }  输出：
+time=&amp;quot;2018-06-08T15:32:35+08:00&amp;quot; level=info msg=&amp;quot;A walrus appears&amp;quot; animal=walrus number=1 size=10  也可以将日志打印到文件：
+log := logrus.New() file, err := os.OpenFile(&amp;quot;logrus.log&amp;quot;, os.O_CREATE|os.O_WRONLY, 0666) if err == nil { log.</description>
+    </item>
+    
+    <item>
+      <title>自己搭建 requestbin 服务</title>
+      <link>https://xiaosongfu.com/archives/2018-04-28-install-requestbin-service/</link>
+      <pubDate>Sat, 28 Apr 2018 16:45:08 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-04-28-install-requestbin-service/</guid>
+      <description>目录  1、requestbin 简介
+2、开始安装
+3、其他
+ 1、requestbin 简介 requestbin 官网：requestbin
+ 1 安装 docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose sudo chmod +x /usr/local/bin/docker-compose  参考：install-compose
+2 build 镜像
+按照 Github 仓库的 READMe 文档安装即可，摘录如下：
+ Deploy your own instance using Docker On the server/machine you want to host this, you&amp;rsquo;ll first need a machine with docker and docker-compose installed, then grab the RequestBin source using git:</description>
+    </item>
+    
+    <item>
+      <title>快速登录 linux 服务器</title>
+      <link>https://xiaosongfu.com/archives/2018-04-28-login-linux-fast/</link>
+      <pubDate>Sat, 28 Apr 2018 13:59:45 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-04-28-login-linux-fast/</guid>
+      <description>目录  1、使用 alias 命令
+2、使用 ~/.ssh/config
+3、可选：配置免密码登录
+ 1、使用 alias 命令 使用 alias 命令为登录命令起一个简短的名字，如：
+alias 别名=`ssh 用户名@ip地址 -p 端口`  执行成功后直接在终端输入 别名 回车并输入密码即可登录。
+ 注意：
+* 要删除一个别名，可以使用 unalias 命令，如 unalias 别名。
+* alias 命令的作用只局限于该次登入的操作。若要每次登入都能够使用这些命令别名，则可将相应的 alias 命令存放到 bash 的初始化文件 /etc/bashrc 中。
+ 2、使用 ~/.ssh/config 编辑 ~/.ssh/config 文件，加入如下内容：
+Host 别名 Hostname ip地址 Port 端口 User 用户名  而配置好之后使用 ssh 别名 回车并输入密码即可登录。
+3、可选：配置免密码登录 使用前面的两种方式都需要输入密码，如果需要免密码登录只需要将本机生成的 rsa 公钥拷贝到服务器上即可。具体步骤如下：
+* 1、生成秘钥
+ssh-keygen -t rsa  生成的密钥在 ~/.</description>
+    </item>
+    
+    <item>
+      <title>安装 golang.org/x/ 下的 package</title>
+      <link>https://xiaosongfu.com/archives/2018-02-24-install-package-on-golang-org-x/</link>
+      <pubDate>Sat, 24 Feb 2018 10:28:46 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-02-24-install-package-on-golang-org-x/</guid>
+      <description> 目录  1、从 github.com 下载
+2、设置命令行代理
+ 1、从 github.com 下载 github.com/golang 组织将 golang.org/x/ 下的包都 mirror 了一份，从这直接下载并保存到正确的目录即可完成安装。可按需执行 go install 来达到和 go get 一样的效果。
+使用如下命令建立好目录：
+mkdir -p $GOPATH/src/golang.org/x/  然后切换到该目录后使用如下命令下载包文件(以 sys 包为例)：
+git clone https://github.com/golang/sys.git  需要更新包文件的时候，切换到对应目录，然后执行以下命令即可:
+git pull origin master  2、设置命令行代理 使用如下命令设置命令行代理：
+export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;  其中 http://127.0.0.1:1087 是你的本地代理服务，需要保证该服务器可用!需要保证该服务器可用!需要保证该服务器可用!
+然后就可以正常使用 go get 来下载了：
+go get -u -v golang.org/x/vgo   其他
+  查看命令行代理设置  echo $http_proxy echo $https_proxy   取消命令行代理设置：  unset http_proxy;unset https_proxy;  </description>
+    </item>
+    
+    <item>
+      <title>质量检测平台 SonarQube：1 使用 Docker 搭建服务器</title>
+      <link>https://xiaosongfu.com/archives/2017-12-07-sonarqube-1-install-using-docker/</link>
+      <pubDate>Thu, 07 Dec 2017 17:15:35 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2017-12-07-sonarqube-1-install-using-docker/</guid>
+      <description>目录  1、使用 Docker 搭建 SonarQube 服务
+ 1、使用 Docker 搭建 SonarQube 服务  SonarQube官网： SonarQube
+官网介绍：The leading product for CONTINUOUS CODE QUALITY
+ 质量检测平台 SonarQube 用于管理源代码的质量，可以从七个维度检测代码质量，通过插件形式，可以支持包括java,C#,C/C++,PL/SQL,Cobol,JavaScrip,Groovy等等二十几种编程语言的代码质量管理与检测。
+SonarQube 由四大组件组成，包括一个 SonarQube 服务器，一个保存 SonarQube 服务器实例配置和所以项目代码质量报告的 SonarQube 数据库，还有 SonarQube服务器安装的各种插件，以及一个或多个运行在构建系统或持续集成系统上的用于分析项目的 SonarQube Scanners 。官网描述如下：
+ Architecture The SonarQube Platform is made of 4 components: 1. One SonarQube Server starting 3 main processes:
+* a Web Server for developers, managers to browse quality snapshots and configure the SonarQube instance * a Search Server based on Elasticsearch to back searches from the UI * a Compute Engine Server in charge of processing code analysis reports and saving them in the SonarQube Database 2.</description>
+    </item>
+    
+    <item>
+      <title>docker push 简记</title>
+      <link>https://xiaosongfu.com/archives/2017-12-07-docker-push-simple-use/</link>
+      <pubDate>Thu, 07 Dec 2017 16:18:18 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2017-12-07-docker-push-simple-use/</guid>
+      <description>目录  1、简记
+2、注意事项
+ 1、简记 使用 docker push 命令将 image 推送到 Docker Hub 之前需要现在 Docker Hub 上注册账号并在命令行登录完成，输入 docker login 后回车，并按照提示输入用户名和密码即可登录成功。
+如果直接推送 image ，则会报错，如下：
+[root@MyCloudServer pos-master]# docker push pos The push refers to a repository [docker.io/library/pos] c4c67b92de11: Preparing 50f193fb6c79: Preparing d7e0a9307630: Preparing f73d86c10bc2: Preparing c59fa6cbcbd9: Preparing 8d4d1ab5ff74: Waiting denied: requested access to the resource is denied [root@MyCloudServer pos-master]#  原因是因为 image 的 REPOSITORY 属性需要和你的 Docker Hub 用户名相关，比如：xiaosongfu/pos，而不能只是 pos 。可以通过添加 tag 的方法来解决。添加 tag 的时候可以显式指定一个 tag ，也可以不指定而使用默认的 latest。先看一下 docker tag 命令的使用方法：</description>
+    </item>
+    
+    <item>
+      <title>使用命令行安装 Android SDK</title>
+      <link>https://xiaosongfu.com/archives/2017-07-31-install-android-sdk-with-terminal/</link>
+      <pubDate>Mon, 31 Jul 2017 13:40:47 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2017-07-31-install-android-sdk-with-terminal/</guid>
+      <description>目录  1、简述
+2、下载基本的 Android 命令行工具
+3、android &amp;amp; sdkmanager 命令的使用
+ 1、简述 通常时候我们需要在 Linux 服务器上搭建 Android 打包环境，目的是为了使用 Jenkins 来进行 CI 或 CD ，但是差不多所有的 Linux 服务器都是 mini 化安装的，即是最小化安装，是没有桌面环境的，意味着我们安装软件都得通过命令行安装。当然你也可以把你本地 Linux 环境的 Android SKD 打包后 scp 到服务器，但是没必要这么麻烦，直接通过命令行安装也是十分简单的。
+2、下载基本的 Android 命令行工具 先来个链接：https://developer.android.com/studio/index.html ,打开后滑到最底部：
+下载完成后的文件为：sdk-tools-linux-3859397.zip，解压它：
+3、android &amp;amp; sdkmanager 命令的使用 3.1 安装 platform-tools 执行命令安装 platform-tools
+tools/android update sdk --no-ui  运行该命令后，首先需要同意协议，然后就会自动开始下载 platform-tools ,下载完成后如下：
+3.2 查看当前安装了哪些 Android SDK 组件 执行命令:
+tools/bin/sdkmanager --list  可以查看当前已经安装了哪些 SDK 组件，运行如下：</description>
+    </item>
+    
+    <item>
+      <title>Android 项目必备文档</title>
+      <link>https://xiaosongfu.com/archives/2017-02-21-android-project-docs/</link>
+      <pubDate>Tue, 21 Feb 2017 13:37:16 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2017-02-21-android-project-docs/</guid>
+      <description>目录  1、IDE 配置文档
+2、编码规范文档
+3、日志打印规范文档
+4、源代码版本控制文档
+5、第三方服务集成文档
+6、版本号规则文档
+7、发版流程文档
+8、APP 版本更新文档
+9、测试机清单文档
+10、应用模块分工文档
+11、应用页面逻辑流程文档
+12、API 分布文档
+13、库使用手册
+先道个歉：说必备有点不要 face 了，但我又想不到可以用别的什么词来修饰比较合适。
+再说个明：标题说是 Android 项目，其实 iOS 项目也是适应的。
+  部分内容参考了包建强老师的《APP 研发录》这本书。
+  下面开始正文。
+作为程序猿，个人的能力其实不应该局限于编码能力，文档的写作能力也尤为重要，只会码代码不会写文档的程序猿都不是好程序猿。
+文档齐全的项目对项目组新人更加的友好，既可提升项目友好度，又可以让新人更快的融入到项目的开发中，尽快开始上手编码。
+我把项目分为应用项目和库项目，库项目除了要包含应用项目所包含的文档外，还应该包含用户友好的 “库使用手册”。1-8为通用共通的应用项目开发手册，9-12为与具体项目相关的应用项目开发手册，13为库项目的库使用手册。
+1、IDE 配置文档 团队开发，不同于单兵作战，统一开发环境十分的重要。我们可能需要统一 IDE 的项目编码和文件编码；还可以统一文件头注释，还有单行字符数量限制等等。让大家的开发环境趋于统一，这样必将减少很多的麻烦。
+2、编码规范文档 编码规范对一个项目的后期维护十分重要，而每一个开发人员可能都有自己根深蒂固的开发习惯，我们应该统一团队的编码规范，让大家都基于同一套规范来编码。阿里巴巴刚刚对外公开的 JAVA 开发手册相信是最佳的规范，好的编码习惯不是一天养成的，加油吧。
+3、日志打印规范文档 在调试模式下哪些信息是需要打印的，日志的级别是什么等等这些都应该在该文档里规范化。比如发起网络请求的请求地址，请求体，服务器原始响应，服务器返回的 JSON 字符串等等这些在调试模式下都应该是要打印出来以便于调试。
+4、源代码版本控制文档 (1) 首先需要提供源代码的仓库地址。
+(2) 如何检出源代码以及检出源代码以后需要做哪些配置才能将项目运行起来。
+(3) 开始开发之前需要做哪些准备，比如是否需要新建新的功能分支，开发人员是否可以自己建包等等。
+(4) 提交代码时的 message 的规范，比如是否需要在 message 中体现本次提交是新增功能，还是 bug 修复，还是别的什么，等等。
+5、第三方服务集成文档 项目在什么时候集成了什么第三方服务，集成的步骤是什么样的，所有的这些都应该以文档的形式被记录下来，这对项目的维护十分的重要，而且当项目换了负责人以后，也能通过该文档清晰的知道项目集成了哪些第三方服务，如果有更换第三方服务的需求，比如把推送服务从极光换成小米或是别的什么，也能够简单快捷不误操作的搞定。说到第三方服务，其实注册第三方服务的时候，应该用公司账号而不应该是项目负责人的私人账号，这样在项目更换负责人的时候就能少掉很多的麻烦。
+6、版本号规则文档 应用发版的时候，版本号建议遵循 * 语义化的版本控制 * 规则，即是：标准的版本号必须采用 X.</description>
+    </item>
+    
+    <item>
+      <title>Jenkins &amp; Gradle for CI</title>
+      <link>https://xiaosongfu.com/archives/2017-02-21-jenkins-gradle-for-ci/</link>
+      <pubDate>Tue, 21 Feb 2017 12:15:01 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2017-02-21-jenkins-gradle-for-ci/</guid>
+      <description>目录  1、简述
+2、适应于本地打包和 Jenkins 打包的签名配置
+3、打包产物 apk 文件的命名
+4、自动化版本号
+5、自动化版本名称
+6、扫描二维码下载 apk
+ 1、简述 CI、CD 什么的我就不说了，相信没有人比 Google 更了解，我把我看过的好的关于安装配置 Jenkins 的文章都附在了下面：
+ Android Jenkins+Git+Gradle持续集成-实在太详细
+使用Jenkins搭建iOS/Android持续集成打包平台
+基于 Jenkins 快速搭建持续集成环境
+基于Gitlab CI搭建持续集成环境
+ 2、适应于本地打包和 Jenkins 打包的签名配置 2.1 gradle 脚本 signingConfigs { release { Properties properties = new Properties() if(rootProject.file(&amp;quot;local.properties&amp;quot;).exists()) { properties.load(rootProject.file(&amp;quot;local.properties&amp;quot;).newDataInputStream()) } storeFile file(properties.get(&amp;quot;storeFile&amp;quot;) ?: String.valueOf(System.getenv(&amp;quot;CI_JENKINS_DEMO_STORE_FILE&amp;quot;))) storePassword properties.get(&amp;quot;storePassword&amp;quot;) ?: String.valueOf(System.getenv(&amp;quot;CI_JENKINS_DEMO_STORE_PASSWORD&amp;quot;)) keyAlias properties.get(&amp;quot;keyAlias&amp;quot;) ?: String.valueOf(System.getenv(&amp;quot;CI_JENKINS_DEMO_KEY_ALIAS&amp;quot;)) keyPassword properties.get(&amp;quot;keyPassword&amp;quot;) ?: String.valueOf(System.getenv(&amp;quot;CI_JENKINS_DEMO_KEY_PASSWORD&amp;quot;)) } }  脚本的功能是先读取项目根目录下的 local.</description>
+    </item>
+    
+    <item>
+      <title>Macaca &#43; uirecorder 实现 Android 自动化测试</title>
+      <link>https://xiaosongfu.com/archives/2017-01-10-macaca-uirecorder-implements-android-auto-test/</link>
+      <pubDate>Tue, 10 Jan 2017 13:23:14 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2017-01-10-macaca-uirecorder-implements-android-auto-test/</guid>
+      <description>目录  1、安装 Macaca
+2、安装 uirecorder
+3、测试
+ Macaca 和 uirecorder 都是基于 Node.js 开发的，所以安装它们之前需要先安装 Node 环境，并且建议将 npm 源切换到国内，比如淘宝 npm 源。后文都是使用淘宝的 npm 源。
+Macaca GitHub：alibaba macaca
+Macaca Home：macacajs
+uirecorder GitHub：alibaba uirecorder
+1、安装 Macaca 先安装 Macaca，为了实现 Android 的自动化测试，还需要安装 Macaca 的 Android 驱动，命令：
+cnpm install -g macaca-cli cnpm install -g macaca-android  Macaca 还有其他平台的驱动，如 iOS 的驱动：npm install -g macaca-ios ，Chrome 的驱动：npm install -g macaca-chrome
+安装完成之后检查一下是否安装成功，运行命令：
+macaca doctor  运行结果如下，即表示安装成功。注意：环境变量的值跟具体的设置有关
+C:\Users\xiaos&amp;gt;macaca doctor macaca-doctor version: 1.</description>
+    </item>
+    
+    <item>
+      <title>为 SpringBoot 应用加持 Sentry</title>
+      <link>https://xiaosongfu.com/archives/2017-01-07-integrate-sentry-for-springboot-app/</link>
+      <pubDate>Sat, 07 Jan 2017 19:26:01 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2017-01-07-integrate-sentry-for-springboot-app/</guid>
+      <description>目录  1、配置方法
+2、参考文档
+ 1、配置方法  sentry 官网，我们可以直接使用官方的服务，也可以自己搭建服务器，对于如何搭建服务器，官方有详细的文档。
+ 1. 在 pom.xml 文件中添加依赖 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.getsentry.raven&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;raven-logback&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;7.8.1&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;  2. 配置 logback-spring.xml 文件 SpringBoot 默认使用 logback 库打印日志，为了实现将日志信息发送到 sentry 服务器，我们需要配置 sentry 的 appender，所以我们需要定义 logback 的配置文件。在 src/main/resource 下新建 logback-spring.xml 文件，并按如下内容进行配置：
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;include resource=&amp;quot;org/springframework/boot/logging/logback/base.xml&amp;quot;/&amp;gt; &amp;lt;appender name=&amp;quot;SENTRY&amp;quot; class=&amp;quot;com.getsentry.raven.logback.SentryAppender&amp;quot;&amp;gt; &amp;lt;dsn&amp;gt;https://c82bb5298ea241a5afd458b083e6acc1:40afd81d85e04135b75a22460be5bfd7@sentry.io/127340&amp;lt;/dsn&amp;gt; &amp;lt;tags&amp;gt;tag1:value1,tag2:value2&amp;lt;/tags&amp;gt; &amp;lt;filter class=&amp;quot;ch.qos.logback.classic.filter.ThresholdFilter&amp;quot;&amp;gt; &amp;lt;level&amp;gt;ERROR&amp;lt;/level&amp;gt; &amp;lt;/filter&amp;gt; &amp;lt;/appender&amp;gt; &amp;lt;root level=&amp;quot;INFO&amp;quot;&amp;gt; &amp;lt;appender-ref ref=&amp;quot;CONSOLE&amp;quot;/&amp;gt; &amp;lt;appender-ref ref=&amp;quot;FILE&amp;quot;/&amp;gt; &amp;lt;appender-ref ref=&amp;quot;SENTRY&amp;quot;/&amp;gt; &amp;lt;/root&amp;gt; &amp;lt;/configuration&amp;gt;  解释：新增了一个名字为 SENTRY 的 appender，实现将 level 为 ERROR 的日志才发送到 sentry 服务器。</description>
+    </item>
+    
+    <item>
+      <title>使用 Zxing 库简单实现二维码生成与扫描</title>
+      <link>https://xiaosongfu.com/archives/2016-12-17-zxing-simple-use/</link>
+      <pubDate>Sat, 17 Dec 2016 14:34:27 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2016-12-17-zxing-simple-use/</guid>
+      <description>目录  1、示例项目结构介绍
+2、复制文件
+3、码好代码
+4、做好配置
+5、查看效果
+ 示例代码放在 Github 上：ZxingSmall
+1、示例项目结构介绍 如图，MainActivity 是主界面，有两个按钮，一个启动扫描二维码界面：CaptureActivity ，一个启动生成二维码界面：GenerateQRCodeActivity 。
+2、复制文件   复制 zxing 包下的所有 java 文件
+ 复制 raw 目录下的 beep.ogg ，这是扫描成功后的提示音
+ 复制 values 目录下的 attrs.xml 、ids.xml 文件
+ 复制 values 目录下的 colors.xml 、strings.xml 中与 zxing 相关的属性
+ 通过启动 CaptureActivity 来启动二维码扫描界面，所以需要复制 layout 目录下的 activity_capture.xml ，它里面 include 了 scanner_toolbar.xml ，所以也需要复制它， scanner_toolbar.xml 又使用到了 abc_ic_back_mtrl_am_alpha.png 图片，所以也需要复制它
+   3、码好代码 3.1 扫描二维码 使用 startActivityForResult(&amp;hellip;) 方法启动 CaptureActivity ，并在 onActivityResult(&amp;hellip;) 方法里接收扫描结果：</description>
+    </item>
+    
+    <item>
+      <title>IntelliJ IDEA 打包 Spring Boot 项目为 jar 包</title>
+      <link>https://xiaosongfu.com/archives/2016-12-15-intellij-idea-package-springboot-project-to-jar/</link>
+      <pubDate>Thu, 15 Dec 2016 15:59:10 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2016-12-15-intellij-idea-package-springboot-project-to-jar/</guid>
+      <description>目录  1、配置
+2、打包
+ 1、配置 将 Spring Boot 项目打成 jar 包十分的简单。首先打开 File &amp;gt; Project Structure ：
+然后选中 Artifacts ，再点击 + 号，选择 JAR ，再选择 From modules with dependecies&amp;hellip; ：
+接着会打开如下界面：
+点击图中1所标识的地方，并在弹出的窗口 Select Main Class 里双击你的主类，并点击 OK 。
+接着选中如下图所示的 Build on make 复选框，最后点击底部的 Apply 和 OK。
+至此，配置就完成了。
+2、打包 点击侧边栏的 Maven Projects ，展开 Maven Projects 面板：
+双击 Lifecycle 下的 package ，接着控制台会有信息打印，如果项目没有错误，打包成功后会在项目的 target 目录下生成 &amp;lsquo;项目名-版本号.jar&amp;rsquo; 文件，他就是你要的东西了。</description>
+    </item>
+    
+    <item>
+      <title>配置属于你自己的 AndroidStudio</title>
+      <link>https://xiaosongfu.com/archives/2016-12-05-individualization-your-androidstudio/</link>
+      <pubDate>Mon, 05 Dec 2016 11:13:47 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2016-12-05-individualization-your-androidstudio/</guid>
+      <description>持续更新&amp;hellip;
+ 目录  1、智能提示大小写不敏感
+2、显示空格符，并用4个空格代替tab键 3、自定义自动生成的文件头注释
+ 1、智能提示大小写不敏感 Android Studio的智能提示默认是大小写敏感的，可以设置为大小写不敏感，设置方法如图：
+2、显示空格符，并用4个空格代替tab键 习惯在文件中显示空格符，并且使用4个空格代替tab键，输入一个tab时会自动替换为4个空格，这纯属个人习惯，配置方法如下： ①先配置显示空格符，如图：
+②配置不使用tab符号
+3、自定义自动生成的文件头注释 新建一个java文件时会自动生成类注释，但默认的注释格式可能不是我们想要的，因此我们可以自定义类注释的格式，方法如下图：
+可以使用${YEAR}、${MONTH}等变量。</description>
+    </item>
+    
+    <item>
+      <title>Nginx-PHP 的安装</title>
+      <link>https://xiaosongfu.com/archives/2016-11-26-install-nginx-and-php/</link>
+      <pubDate>Sat, 26 Nov 2016 18:17:43 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2016-11-26-install-nginx-and-php/</guid>
+      <description>目录  1、php的安装
+2、nginx的安装
+ 1、php的安装 1.1 下载PHP源码包 进入php下载页面，根据自己的喜好，下载任意一种压缩格式的源码包都可以。
+选择一个就近的站点下载源码包即可。
+1.2 安装依赖 yum install libxml2 libxml2-devel yum install bzip2 bzip2-devel yum install curl curl-devel yum install libmcrypt libmcrypt-devel mcrypt mhash yum install readline readline-devel  如果不先安装这些依赖，则在执行configure命令时会报错误，所以最好的方式是先安装依赖。
+1.3 编译安装PHP ①先解压php源码包：tar -zxvf php
+②切换到解压后的目录下，执行configure命令：
+./configure \ --prefix=/usr/local/php \ --enable-fpm  如果没有错误的话，结果如下图：
+③没有错误就继续下一步，即是编译：
+make  如果没有错误的话，结果如下图：
+④没有错误就继续下一步，即是安装：
+make install  如果没有错误的话，结果如下图：
+1.4 启动PHP-FPM PHP-FPM是一个PHP FastCGI管理器，PHP-FPM提供了更好的PHP进程管理方式，可以有效控制内存和进程、可以平滑重载PHP配置，比spawn-fcgi具有更多优点，所以被PHP官 方收录了。
+新版PHP已经集成php-fpm了，不再作为第三方包。
+在./configure的时候带 –enable-fpm参数即可开启PHP-FPM。
+A、配置和启动php-fpm的方法如下：
+cd /usr/local/php/etc cp php-fpm.</description>
+    </item>
+    
+    <item>
+      <title>Letsencrypt的简单使用 2-证书的更新</title>
+      <link>https://xiaosongfu.com/archives/2016-11-26-letsencrypt-simeple-use-2-update-pem-and-key-files/</link>
+      <pubDate>Sat, 26 Nov 2016 16:24:12 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2016-11-26-letsencrypt-simeple-use-2-update-pem-and-key-files/</guid>
+      <description> 待填坑&amp;hellip;
+ </description>
+    </item>
+    
+    <item>
+      <title>Letsencrypt的简单使用 1-证书的生成和配置</title>
+      <link>https://xiaosongfu.com/archives/2016-11-26-letsencrypt-simeple-use-1-generate-pem-and-key-files/</link>
+      <pubDate>Sat, 26 Nov 2016 16:23:47 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2016-11-26-letsencrypt-simeple-use-1-generate-pem-and-key-files/</guid>
+      <description>目录  1、下载letsencrypt客户端
+2、生成证书
+3、配置nginx的https服务器
+ 1、下载letsencrypt客户端 需要使用git命令下载letsencrypt客户端，步骤和命令如下：
+git clone https://github.com/letsencrypt/letsencrypt cd letsencrypt  2、生成证书 命令：
+./letsencrypt-auto  该命令的执行需要很多的依赖库，但是我们并不需要关心，因为它会找到系统的yum命令的目录，然后自动帮我们安装。
+有些库yum源里面可能找不到而无法安装，我在执行的时候就出错了，提示信息如下：
+Loading mirror speeds from cached hostfile * base: centos.mirrors.hoobly.com * extras: mirror.pac-12.org * updates: mirrors.easynews.com No package python-virtualenv available. No package python-pip available.  对于这个问题，可以通过安装epel解决，安装好epel之后再重新执行 ./letsencrypt-auto 即可解决。安装epel的命令是：yum install epel-release
+所有依赖库自动安装完成后，在执行的时候还是报错了，提示说是因为Python需要2.7以上版本，但我的系统是2.6.6。但是yum又需要Python是2.6.6的版本，所以我没有选择升级Python，而是换一个命令生成证书（当然是可以通过升级Python来实现证书的生成）。报错信息如下：
+Requesting root privileges to run letsencrypt… /root/.local/share/letsencrypt/bin/letsencrypt /root/.local/share/letsencrypt/lib/python2.6/site-packages/cryptography/__init__.py:26: DeprecationWarning: Python 2.6 is no longer supported by the Python core team, please upgrade your Python.</description>
+    </item>
+    
+    <item>
+      <title>Java/Android代码片段</title>
+      <link>https://xiaosongfu.com/archives/2016-11-26-android-code-snippet/</link>
+      <pubDate>Sat, 26 Nov 2016 16:12:25 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2016-11-26-android-code-snippet/</guid>
+      <description>持续更新&amp;hellip;
+ 目录(Java)  1、翻页的开始索引和结束索引计算
+2、由总记录数和页大小计算页数量
+ 目录(Android)  1、随意拖动一个View
+2、修复 ScrollView 嵌套 ListView 数据显示不全
+3、修复 ScrollView 嵌套 ListView 显示焦点在 ListView
+ Java 1、翻页的开始索引和结束索引计算 int begin = (pageNo - 1) * pageSize + 1; int end = pageNo * pageSize;  2、由总记录数和页大小计算页数量 pageCount = (int)Math.ceil((double) dataSize / (double) pageSize);  Android 1、随意拖动一个View public class MainActivity extends AppCompatActivity { private Button mButton = null; private int mLastX, mLastY; @Override protected void onCreate(Bundle savedInstanceState) { super.</description>
+    </item>
+    
+  </channel>
+</rss>

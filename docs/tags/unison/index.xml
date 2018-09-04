@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unison on xiaosongfu</title>
+    <link>https://xiaosongfu.com/tags/unison/</link>
+    <description>Recent content in Unison on xiaosongfu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Aug 2018 15:39:31 +0800</lastBuildDate>
+    
+	<atom:link href="https://xiaosongfu.com/tags/unison/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Unison 简单使用</title>
+      <link>https://xiaosongfu.com/archives/2018-08-07-unison-simple-use/</link>
+      <pubDate>Tue, 07 Aug 2018 15:39:31 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-08-07-unison-simple-use/</guid>
+      <description>下载安装 OCaml 语言的编译器 http://ocaml.org/docs/install.html
+yum install ocaml  下载 unison 源码并编译安装 下载 unison 源码
+https://github.com/bcpierce00/unison/releases
+wget https://github.com/bcpierce00/unison/archive/v2.51.2.zip  编译安装
+http://www.seas.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html#building
+make UISTYLE=text make install  如果 make install 命令报错，如下:
+[root@host unison-2.51.2]# make install (cd src; make install) make[1]: 进入目录“/root/unison-2.51.2/src” UISTYLE = text Building for Unix NATIVE = true THREADS = false STATIC = false OSTYPE = OSARCH = Linux mv /root/bin//unison /tmp/unison-1473 mv: 无法获取&amp;quot;/root/bin//unison&amp;quot; 的文件状态(stat): 没有那个文件或目录 make[1]: [doinstall] 错误 1 (忽略) cp unison /root/bin/ cp: 无法创建普通文件&amp;quot;/root/bin/&amp;quot;: 不是目录 make[1]: *** [doinstall] 错误 1 make[1]: 离开目录“/root/unison-2.</description>
+    </item>
+    
+  </channel>
+</rss>

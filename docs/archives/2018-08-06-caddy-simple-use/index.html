@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico?cb=150118" type="image/x-icon">
+<link rel="alternate" href="/index.xml" type="application/rss+xml" title="xiaosongfu">
+<title>Caddy 简单实用 - xiaosongfu</title>
+</head>
+<body>
+
+<div class="container">
+
+  <header role="banner">
+    <div class="row">
+      <a href="/" class="site-title">xiaosongfu</a>
+      <a href="/about/" class="site-about">About</a>
+    </div>
+  </header>
+
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <div class="entry-header">
+        <div class="bubble bubble-caddy"></div>
+        <h1 class="entry-title" itemprop="headline">Caddy 简单实用</h1>
+        <span class="entry-meta"><time itemprop="datePublished" datetime="2018-08-06">2018-08-06 15:55:18</time> <a href="/categories/caddy">#caddy</a></span>
+      </div>
+      <section itemprop="text">
+        
+
+<h2 id="目录">目录</h2>
+
+<blockquote>
+<p>1、安装<br />
+2、创建配置文件</p>
+</blockquote>
+
+<h3 id="安装">安装</h3>
+
+<pre><code>[root@JD ~]# curl https://getcaddy.com | bash -s personal
+</code></pre>
+
+<p>创建相关目录</p>
+
+<pre><code>[root@JD ~]# mkdir /etc/caddy
+[root@JD ~]# mkdir /etc/ssl/caddy
+[root@JD ~]# mkdir /var/log/caddy
+</code></pre>
+
+<h3 id="创建配置文件">创建配置文件</h3>
+
+<pre><code>[root@JD ~]# vi /etc/caddy/Caddyfile
+</code></pre>
+
+<h3 id="启动服务">启动服务</h3>
+
+<pre><code>[root@JD ~]# caddy -conf /etc/caddy/Caddyfile
+</code></pre>
+
+      </section>
+      <div class="share">
+        <a href="https://twitter.com/share?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-08-06-caddy-simple-use%2f&text=Caddy%20%e7%ae%80%e5%8d%95%e5%ae%9e%e7%94%a8" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="twitter">
+          <img src="/assets/fonts/twitter.svg" width="18" height="18">
+        </a>
+        <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-08-06-caddy-simple-use%2f" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="facebook">
+          <img src="/assets/fonts/facebook.svg" width="18" height="18">
+        </a>
+        <a href="https://getpocket.com/edit?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-08-06-caddy-simple-use%2f&title=Caddy%20%e7%ae%80%e5%8d%95%e5%ae%9e%e7%94%a8" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,scrollbars=yes,height=300,width=600');return false;" class="pocket">
+          <img src="/assets/fonts/pocket.svg" width="18" height="18">
+        </a>
+      </div>
+    </article>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+         
+        var disqus_shortname = 'xiaosongfu'; 
+
+         
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </main>
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+</script>
+
+</body>
+</html>
+

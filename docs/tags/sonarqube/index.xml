@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sonarqube on xiaosongfu</title>
+    <link>https://xiaosongfu.com/tags/sonarqube/</link>
+    <description>Recent content in Sonarqube on xiaosongfu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 07 Dec 2017 17:15:35 +0000</lastBuildDate>
+    
+	<atom:link href="https://xiaosongfu.com/tags/sonarqube/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>质量检测平台 SonarQube：1 使用 Docker 搭建服务器</title>
+      <link>https://xiaosongfu.com/archives/2017-12-07-sonarqube-1-install-using-docker/</link>
+      <pubDate>Thu, 07 Dec 2017 17:15:35 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2017-12-07-sonarqube-1-install-using-docker/</guid>
+      <description>目录  1、使用 Docker 搭建 SonarQube 服务
+ 1、使用 Docker 搭建 SonarQube 服务  SonarQube官网： SonarQube
+官网介绍：The leading product for CONTINUOUS CODE QUALITY
+ 质量检测平台 SonarQube 用于管理源代码的质量，可以从七个维度检测代码质量，通过插件形式，可以支持包括java,C#,C/C++,PL/SQL,Cobol,JavaScrip,Groovy等等二十几种编程语言的代码质量管理与检测。
+SonarQube 由四大组件组成，包括一个 SonarQube 服务器，一个保存 SonarQube 服务器实例配置和所以项目代码质量报告的 SonarQube 数据库，还有 SonarQube服务器安装的各种插件，以及一个或多个运行在构建系统或持续集成系统上的用于分析项目的 SonarQube Scanners 。官网描述如下：
+ Architecture The SonarQube Platform is made of 4 components: 1. One SonarQube Server starting 3 main processes:
+* a Web Server for developers, managers to browse quality snapshots and configure the SonarQube instance * a Search Server based on Elasticsearch to back searches from the UI * a Compute Engine Server in charge of processing code analysis reports and saving them in the SonarQube Database 2.</description>
+    </item>
+    
+  </channel>
+</rss>

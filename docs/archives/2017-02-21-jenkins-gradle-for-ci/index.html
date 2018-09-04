@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico?cb=150118" type="image/x-icon">
+<link rel="alternate" href="/index.xml" type="application/rss+xml" title="xiaosongfu">
+<title>Jenkins &amp; Gradle for CI - xiaosongfu</title>
+</head>
+<body>
+
+<div class="container">
+
+  <header role="banner">
+    <div class="row">
+      <a href="/" class="site-title">xiaosongfu</a>
+      <a href="/about/" class="site-about">About</a>
+    </div>
+  </header>
+
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <div class="entry-header">
+        <div class="bubble bubble-jenkinsgradle"></div>
+        <h1 class="entry-title" itemprop="headline">Jenkins &amp; Gradle for CI</h1>
+        <span class="entry-meta"><time itemprop="datePublished" datetime="2017-02-21">2017-02-21 12:15:01</time> <a href="/categories/jenkins">#jenkins</a><a href="/categories/gradle">#gradle</a></span>
+      </div>
+      <section itemprop="text">
+        
+
+<h2 id="目录">目录</h2>
+
+<blockquote>
+<p>1、简述<br />
+2、适应于本地打包和 Jenkins 打包的签名配置<br />
+3、打包产物 apk 文件的命名<br />
+4、自动化版本号<br />
+5、自动化版本名称<br />
+6、扫描二维码下载 apk</p>
+</blockquote>
+
+<h3 id="1-简述">1、简述</h3>
+
+<p>CI、CD 什么的我就不说了，相信没有人比 Google 更了解，我把我看过的好的关于安装配置 Jenkins 的文章都附在了下面：</p>
+
+<blockquote>
+<p><a href="http://www.jianshu.com/p/38b2e17ced73#">Android Jenkins+Git+Gradle持续集成-实在太详细</a><br />
+<a href="http://debugtalk.com/post/iOS-Android-Packing-with-Jenkins/">使用Jenkins搭建iOS/Android持续集成打包平台</a><br />
+<a href="https://www.ibm.com/developerworks/cn/java/j-lo-jenkins/">基于 Jenkins 快速搭建持续集成环境</a><br />
+<a href="http://www.jianshu.com/p/705428ca1410">基于Gitlab CI搭建持续集成环境</a></p>
+</blockquote>
+
+<h3 id="2-适应于本地打包和-jenkins-打包的签名配置">2、适应于本地打包和 Jenkins 打包的签名配置</h3>
+
+<h4 id="2-1-gradle-脚本">2.1 gradle 脚本</h4>
+
+<pre><code>signingConfigs {
+    release {
+        Properties properties = new Properties()
+        if(rootProject.file(&quot;local.properties&quot;).exists()) {
+            properties.load(rootProject.file(&quot;local.properties&quot;).newDataInputStream())
+        }
+        storeFile file(properties.get(&quot;storeFile&quot;) ?: String.valueOf(System.getenv(&quot;CI_JENKINS_DEMO_STORE_FILE&quot;)))
+        storePassword properties.get(&quot;storePassword&quot;) ?: String.valueOf(System.getenv(&quot;CI_JENKINS_DEMO_STORE_PASSWORD&quot;))
+        keyAlias properties.get(&quot;keyAlias&quot;) ?:  String.valueOf(System.getenv(&quot;CI_JENKINS_DEMO_KEY_ALIAS&quot;))
+        keyPassword properties.get(&quot;keyPassword&quot;)  ?: String.valueOf(System.getenv(&quot;CI_JENKINS_DEMO_KEY_PASSWORD&quot;))
+    }
+}
+</code></pre>
+
+<p>脚本的功能是先读取项目根目录下的 local.properties 文件，如果它存在，就将它里面配置的属性读取到 properties 中；然后从 properties 中分别获取 storeFile 等属性，如果 properties 中有相应属性对应的值，则使用其值，如果没有则通过 System.getenv(&ldquo;xx&rdquo;) 获取相应系统环境变量对应的值。</p>
+
+<blockquote>
+<p>如果本地有 local.properties 文件，并且里面也配置了 storeFile 等属性，则适合于本地手动打包；<br />
+如果本地没有 local.properties 文件，那么从 properties 中获取到的 storeFile 等属性将为空，转而使用系统配置的环境变量，则适合于 CI 打包。</p>
+</blockquote>
+
+<p>Android 项目都会在 .gitignore 文件中配置忽略 local.properties 文件和 jks 签名文件，所以当 CI 服务器从远程仓库垃取到代码后，在项目的根目录下是没有 local.properties 文件的，这时就应该使用在打包服务器上配置的环境变量；而如果是在本地打包，则肯定是有 local.properties 文件的，只需要在里面配置好 storeFile 等属性即可。所以接下来要在本地和 CI 服务器上做相应的配置。</p>
+
+<h4 id="2-2-配置本地打包">2.2 配置本地打包</h4>
+
+<p>在本地项目根目录的 local.properties 文件中增加的配置如下：</p>
+
+<pre><code># 为本地生成签名 APK 配置签名信息
+storeFile=jenkinsdemo.jks
+storePassword=1234
+keyAlias=jenkinsdemo
+keyPassword=1234
+</code></pre>
+
+<p>从 storeFile 的配置来看，需要将签名文件 jenkinsdemo.jks 放在 module 的根目录下，这个需要当心；而且每次重新检出项目代码到本地开发的时候，如果有在本地打签名包的需求，还需要拷贝 jenkinsdemo.jks 文件和配置好 local.properties 文件。</p>
+
+<h4 id="2-3-配置-ci-服务器打包">2.3 配置 CI 服务器打包</h4>
+
+<p>在 Jenkins 服务器主面板的 系统管理 &gt; 系统设置 &gt; 全局属性 下勾选 Environment variables，并增加环境变量，需要配置4个环境变量，环境变量的键使用 signingConfigs 中指定的，值按照自己的情况来配置即可。如下图所示：</p>
+
+<p><img src="https://lollipop.xiaosongfu.com/blog/201702/jenkins-env.png" alt="你看不到我^_^" /></p>
+
+<p>其中签名文件的路径是需要先将签名文件上传到服务器，然后才能拿到它的绝对路径并配置。</p>
+
+<p>&ndash;&gt; 这里实现的“本地打包和 Jenkins 打包的签名配置”只是一种实现方式，欢迎交流其他的实现方式。</p>
+
+<h3 id="3-保存打包产物">3、保存打包产物</h3>
+
+<p>打包生成的 apk 文件可能需要复制到其他目录做永久保存，也可能需要上传到第三方应用内侧分发平台；但是如果启用的混淆，那么 mapping 文件则是必须要保存下来的，因为当线上的应用发生 crash 时，为了还原堆栈信息，mapping 映射文件是必备可少的。</p>
+
+      </section>
+      <div class="share">
+        <a href="https://twitter.com/share?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2017-02-21-jenkins-gradle-for-ci%2f&text=Jenkins%20%26%20Gradle%20for%20CI" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="twitter">
+          <img src="/assets/fonts/twitter.svg" width="18" height="18">
+        </a>
+        <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fxiaosongfu.com%2farchives%2f2017-02-21-jenkins-gradle-for-ci%2f" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="facebook">
+          <img src="/assets/fonts/facebook.svg" width="18" height="18">
+        </a>
+        <a href="https://getpocket.com/edit?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2017-02-21-jenkins-gradle-for-ci%2f&title=Jenkins%20%26%20Gradle%20for%20CI" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,scrollbars=yes,height=300,width=600');return false;" class="pocket">
+          <img src="/assets/fonts/pocket.svg" width="18" height="18">
+        </a>
+      </div>
+    </article>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+         
+        var disqus_shortname = 'xiaosongfu'; 
+
+         
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </main>
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico?cb=150118" type="image/x-icon">
+<link rel="alternate" href="/index.xml" type="application/rss+xml" title="xiaosongfu">
+<title>安装 Flutter SDK - xiaosongfu</title>
+</head>
+<body>
+
+<div class="container">
+
+  <header role="banner">
+    <div class="row">
+      <a href="/" class="site-title">xiaosongfu</a>
+      <a href="/about/" class="site-about">About</a>
+    </div>
+  </header>
+
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <div class="entry-header">
+        <div class="bubble bubble-flutter"></div>
+        <h1 class="entry-title" itemprop="headline">安装 Flutter SDK</h1>
+        <span class="entry-meta"><time itemprop="datePublished" datetime="2018-07-06">2018-07-06 10:17:34</time> <a href="/categories/flutter">#flutter</a></span>
+      </div>
+      <section itemprop="text">
+        
+
+<p>The Flutter SDK includes Flutter’s engine, framework, widgets, tools, and a Dart SDK.<br />
+Flutter SDK 包括 Flutter 的引擎、框架、widgets、工具和 Dart SDK。</p>
+
+<blockquote>
+<p>以 macOS 系统为例</p>
+</blockquote>
+
+<h4 id="1-配置国内的镜像站点">1、配置国内的镜像站点</h4>
+
+<p>国内用户建议配置一个与官方同步的可信的镜像站点，帮助 Flutter 命令行工具到该镜像站点下载其所需的资源，来加速安装和使用，为此需要设置两个环境变量：“PUB_HOSTED_URL”和“FLUTTER_STORAGE_BASE_URL”，然后再运行 Flutter 命令行工具。配置方法如下：</p>
+
+<pre><code>export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+</code></pre>
+
+<p>目前可用的镜像站点有两个：</p>
+
+<ul>
+<li><p>上海交通大学 Linux 用户组<br />
+FLUTTER_STORAGE_BASE_URL: <a href="https://mirrors.sjtug.sjtu.edu.cn">https://mirrors.sjtug.sjtu.edu.cn</a><br />
+PUB_HOSTED_URL: <a href="https://dart-pub.mirrors.sjtug.sjtu.edu.cn">https://dart-pub.mirrors.sjtug.sjtu.edu.cn</a></p></li>
+
+<li><p>Flutter 社区<br />
+FLUTTER_STORAGE_BASE_URL: <a href="https://storage.flutter-io.cn">https://storage.flutter-io.cn</a><br />
+PUB_HOSTED_URL: <a href="https://pub.flutter-io.cn">https://pub.flutter-io.cn</a></p></li>
+</ul>
+
+<p>更多信息请翻阅：<a href="https://github.com/flutter/flutter/wiki/Using-Flutter-in-China">Using Flutter in China</a> | <a href="https://flutter-io.cn/#section-china-mirror">Flutter 社区中文资源-使用镜像</a></p>
+
+<h4 id="2-安装-flutter-sdk">2、安装 Flutter SDK</h4>
+
+<p>安装方式有两种，一种是直接 clone 官方仓库 <code>git clone -b beta https://github.com/flutter/flutter.git</code>；另一种是下载官方安装包(installation bundle)</p>
+
+<h5 id="2-1-use-git-clone">2.1 use git clone</h5>
+
+<p>创建要保存 Flutter SDK 的目录后直接 clone 即可，通常都是使用 beta 分支：</p>
+
+<pre><code>git clone -b beta https://github.com/flutter/flutter.git
+</code></pre>
+
+<p>后续的步骤请参考 2.2 节的 <code>Step2: 配置环境变量</code>。</p>
+
+<h5 id="2-2-download-installation-bundle">2.2 download installation bundle</h5>
+
+<p>浏览 <a href="https://flutter.io/sdk-archive/">SDK archive</a> 查看所有可用的版本。</p>
+
+<p><img src="https://lollipop.xiaosongfu.com/notes/software/201807/flutter-sdk.png" alt="flutter-sdk" /></p>
+
+<p>Flutter SDK 分 Beta channel、Dev channel、Master channel。Beta channel 包含大多数稳定的 Flutter 构建。</p>
+
+<p>Beta channel 最稳定；其次是 Dev channel；Master channel 分支极不稳定，有时会有破坏性修改。相关信息请翻阅 <a href="https://github.com/flutter/flutter/wiki/Flutter-build-release-channels">Flutter’s channels</a>。</p>
+
+<p>浏览 <a href="https://github.com/flutter/flutter/wiki/Flutter-Installation-Bundles">Installation bundles</a>查看官方安装包(installation bundle)是怎么组织的。</p>
+
+<ul>
+<li>Step1: 下载并解压 bundle</li>
+</ul>
+
+<p>在 <a href="https://flutter.io/sdk-archive/">SDK archive</a> 页面下载bundle，是一个 zip 压缩包，将其解压到你想要保存 Flutter SDK 的目录。</p>
+
+<blockquote>
+<p>这个下载地址需要 FQ ，可以到笔者搭建的 Mirrors 站点下载：<a href="https://mirrors.xiaosongfu.com/#/flutter/flutter">https://mirrors.xiaosongfu.com</a></p>
+</blockquote>
+
+<ul>
+<li>Step2: 配置环境变量</li>
+</ul>
+
+<p>使用 vi 编辑 $HOME/.bash_profile，加入以下内容</p>
+
+<pre><code>export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+
+export PATH=$PATH:/path/to/flutter/bin
+</code></pre>
+
+<p><code>/path/to/flutter</code> 就是你保存 Flutter 的位置。</p>
+
+<h4 id="3-初始化-flutter">3、初始化 Flutter</h4>
+
+<p>配置好环境变量后执行 <code>flutter doctor</code> ，该命令会下载 Dart SDK，Flutter 的依赖库并且编译 Flutter Tools，还会检查本机的环境是否满足 Flutter 开发，比如 Android SDK 是否配置好、IDE 的 Flutter 插件是否已经安装，等等，检查的结果会显示在命名行，如果有不满足的，按要求修复即可。修复后重新执行 <code>flutter doctor</code> 查看修复结果。</p>
+
+<p>某一次的运行结果记录如下：</p>
+
+<pre><code>fuxiaosongdeMac-mini:~ fuxiaosong$ flutter doctor
+Doctor summary (to see all details, run flutter doctor -v):
+[✓] Flutter (Channel beta, v0.5.1, on Mac OS X 10.13.5 17F77, locale zh-Hans-CN)
+[✓] Android toolchain - develop for Android devices (Android SDK 27.0.3)
+[!] iOS toolchain - develop for iOS devices (Xcode 9.3)
+    ✗ Verify that all connected devices have been paired with this computer in Xcode.
+      If all devices have been paired, libimobiledevice and ideviceinstaller may require updating.
+      To update, run:
+        brew uninstall --ignore-dependencies libimobiledevice
+        brew install --HEAD libimobiledevice
+        brew install ideviceinstaller
+[✓] Android Studio (version 2.3)
+    ✗ Flutter plugin not installed; this adds Flutter specific functionality.
+    ✗ Dart plugin not installed; this adds Dart specific functionality.
+[✓] Android Studio (version 3.1)
+    ✗ Flutter plugin not installed; this adds Flutter specific functionality.
+    ✗ Dart plugin not installed; this adds Dart specific functionality.
+[!] IntelliJ IDEA Community Edition (version 2017.1)
+    ✗ Flutter plugin not installed; this adds Flutter specific functionality.
+    ✗ Dart plugin not installed; this adds Dart specific functionality.
+[✓] IntelliJ IDEA Ultimate Edition (version 2017.3.5)
+[!] VS Code (version 1.25.0)
+[✓] Connected devices (1 available)
+
+! Doctor found issues in 3 categories.
+fuxiaosongdeMac-mini:~ fuxiaosong$
+</code></pre>
+
+<h4 id="4-配置-ide">4、配置 IDE</h4>
+
+<p>配置 IDE 很简单，Jetbrains 系的 IDE 只需安装 Dart Plugin 和 Flutter Plugin 即可。 Visual Studio Code 只需要安装好 Dart 和 Flutter 扩展即可。</p>
+
+      </section>
+      <div class="share">
+        <a href="https://twitter.com/share?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-07-06-install-fllutter-sdk%2f&text=%e5%ae%89%e8%a3%85%20Flutter%20SDK" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="twitter">
+          <img src="/assets/fonts/twitter.svg" width="18" height="18">
+        </a>
+        <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-07-06-install-fllutter-sdk%2f" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="facebook">
+          <img src="/assets/fonts/facebook.svg" width="18" height="18">
+        </a>
+        <a href="https://getpocket.com/edit?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-07-06-install-fllutter-sdk%2f&title=%e5%ae%89%e8%a3%85%20Flutter%20SDK" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,scrollbars=yes,height=300,width=600');return false;" class="pocket">
+          <img src="/assets/fonts/pocket.svg" width="18" height="18">
+        </a>
+      </div>
+    </article>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+         
+        var disqus_shortname = 'xiaosongfu'; 
+
+         
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </main>
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android Studio on xiaosongfu</title>
+    <link>https://xiaosongfu.com/tags/android-studio/</link>
+    <description>Recent content in Android Studio on xiaosongfu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 05 Dec 2016 11:13:47 +0000</lastBuildDate>
+    
+	<atom:link href="https://xiaosongfu.com/tags/android-studio/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>配置属于你自己的 AndroidStudio</title>
+      <link>https://xiaosongfu.com/archives/2016-12-05-individualization-your-androidstudio/</link>
+      <pubDate>Mon, 05 Dec 2016 11:13:47 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2016-12-05-individualization-your-androidstudio/</guid>
+      <description>持续更新&amp;hellip;
+ 目录  1、智能提示大小写不敏感
+2、显示空格符，并用4个空格代替tab键 3、自定义自动生成的文件头注释
+ 1、智能提示大小写不敏感 Android Studio的智能提示默认是大小写敏感的，可以设置为大小写不敏感，设置方法如图：
+2、显示空格符，并用4个空格代替tab键 习惯在文件中显示空格符，并且使用4个空格代替tab键，输入一个tab时会自动替换为4个空格，这纯属个人习惯，配置方法如下： ①先配置显示空格符，如图：
+②配置不使用tab符号
+3、自定义自动生成的文件头注释 新建一个java文件时会自动生成类注释，但默认的注释格式可能不是我们想要的，因此我们可以自定义类注释的格式，方法如下图：
+可以使用${YEAR}、${MONTH}等变量。</description>
+    </item>
+    
+  </channel>
+</rss>

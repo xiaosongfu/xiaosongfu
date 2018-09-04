@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico?cb=150118" type="image/x-icon">
+<link rel="alternate" href="/index.xml" type="application/rss+xml" title="xiaosongfu">
+<title>安装 Golang - xiaosongfu</title>
+</head>
+<body>
+
+<div class="container">
+
+  <header role="banner">
+    <div class="row">
+      <a href="/" class="site-title">xiaosongfu</a>
+      <a href="/about/" class="site-about">About</a>
+    </div>
+  </header>
+
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <div class="entry-header">
+        <div class="bubble bubble-golang"></div>
+        <h1 class="entry-title" itemprop="headline">安装 Golang</h1>
+        <span class="entry-meta"><time itemprop="datePublished" datetime="2018-06-26">2018-06-26 17:54:16</time> <a href="/categories/golang">#golang</a></span>
+      </div>
+      <section itemprop="text">
+        
+
+<p>安装 golang 十分的简单，只需要下载 archive 包，解压，设置 GOROOT 和 GOPATH 环境变量，并将它们的 bin 目录添加到系统 PATH 环境变量即可。</p>
+
+<blockquote>
+<p>以 Linux 系统为例，安装 1.10.2 版本(已使用 root 用户登录服务器)</p>
+</blockquote>
+
+<h5 id="1-创建保存-golang-的目录">1.创建保存 golang 的目录</h5>
+
+<pre><code>mkdir -p /root/dev/go/gopath
+cd /root/dev/go
+</code></pre>
+
+<p>创建 go 和 go/gopath 目录，安装完成后的目录结构会是这样的：</p>
+
+<pre><code>[root@JD ~]# tree -L 4
+.
+└── dev
+    └── go
+        ├── go
+        │   ├── api
+        │   ├── AUTHORS
+        │   ├── bin
+        │   ├── blog
+        │   ├── CONTRIBUTING.md
+        │   ├── CONTRIBUTORS
+        │   ├── doc
+        │   ├── favicon.ico
+        │   ├── lib
+        │   ├── LICENSE
+        │   ├── misc
+        │   ├── PATENTS
+        │   ├── pkg
+        │   ├── README.md
+        │   ├── robots.txt
+        │   ├── src
+        │   ├── test
+        │   └── VERSION
+        ├── go1.10.2.linux-amd64.tar.gz
+        └── gopath
+
+13 directories, 10 files
+</code></pre>
+
+<h5 id="2-下载-golang-archive-包-国内官网-https-golang-google-cn-dl-https-golang-google-cn-dl">2.下载 golang archive 包。国内官网：<a href="https://golang.google.cn/dl/">https://golang.google.cn/dl/</a></h5>
+
+<pre><code>wget https://dl.google.com/go/go1.10.2.linux-amd64.tar.gz
+</code></pre>
+
+<p>下载地址是有规律的： <code>go$VERSION.$OS-$ARCH.tar.gz</code>，所以安装新版本的时候可以直接拼接下载地址直接下载。</p>
+
+<blockquote>
+<p>这个下载地址需要 FQ ，可以到笔者搭建的 Mirrors 站点下载：<a href="https://mirrors.xiaosongfu.com/#/golang/golang">https://mirrors.xiaosongfu.com</a></p>
+</blockquote>
+
+<h5 id="3-下载完成之后解压">3.下载完成之后解压</h5>
+
+<pre><code>tar -C ~/dev/go -xzf go1.10.2.linux-amd64.tar.gz
+</code></pre>
+
+<h5 id="4-设置-goroot-和-gopath-环境变量-并将它们的-bin-目前加到系统-path-环境变量">4.设置 GOROOT 和 GOPATH 环境变量，并将它们的 bin 目前加到系统 PATH 环境变量</h5>
+
+<blockquote>
+<p>You can do this by adding this line to your /etc/profile (for a system-wide installation) or $HOME/.profile &mdash;- 摘自官网</p>
+</blockquote>
+
+<p>配置环境变量可以使用 <code>/etc/profile</code> 文件或 <code>$HOME/.profile</code> 文件，这里以 <code>/etc/profile</code> 为例：</p>
+
+<pre><code>vi /etc/profile
+</code></pre>
+
+<p>在文件中添加一下内容：</p>
+
+<pre><code>export GOROOT=&quot;/root/develop/go/go&quot;
+export GOPATH=&quot;/root/develop/go/gopath&quot;
+
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+</code></pre>
+
+<p>首先设置了 GOROOT 和 GOPATH 环境变量，然后将它们的 bin 目录都添加到了系统 PATH 环境变量。</p>
+
+<p>接着执行 <code>source /etc/profile</code> 命令让配置生效：</p>
+
+<pre><code>source /etc/profile
+</code></pre>
+
+<h5 id="5-测试安装是否成功">5.测试安装是否成功</h5>
+
+<pre><code>go version
+</code></pre>
+
+      </section>
+      <div class="share">
+        <a href="https://twitter.com/share?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-06-26-install-golang%2f&text=%e5%ae%89%e8%a3%85%20Golang" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="twitter">
+          <img src="/assets/fonts/twitter.svg" width="18" height="18">
+        </a>
+        <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-06-26-install-golang%2f" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="facebook">
+          <img src="/assets/fonts/facebook.svg" width="18" height="18">
+        </a>
+        <a href="https://getpocket.com/edit?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-06-26-install-golang%2f&title=%e5%ae%89%e8%a3%85%20Golang" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,scrollbars=yes,height=300,width=600');return false;" class="pocket">
+          <img src="/assets/fonts/pocket.svg" width="18" height="18">
+        </a>
+      </div>
+    </article>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+         
+        var disqus_shortname = 'xiaosongfu'; 
+
+         
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </main>
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+</script>
+
+</body>
+</html>
+

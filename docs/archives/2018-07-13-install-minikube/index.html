@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico?cb=150118" type="image/x-icon">
+<link rel="alternate" href="/index.xml" type="application/rss+xml" title="xiaosongfu">
+<title>主流操作系统安装 Minikube - xiaosongfu</title>
+</head>
+<body>
+
+<div class="container">
+
+  <header role="banner">
+    <div class="row">
+      <a href="/" class="site-title">xiaosongfu</a>
+      <a href="/about/" class="site-about">About</a>
+    </div>
+  </header>
+
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <div class="entry-header">
+        <div class="bubble bubble-kubernets"></div>
+        <h1 class="entry-title" itemprop="headline">主流操作系统安装 Minikube</h1>
+        <span class="entry-meta"><time itemprop="datePublished" datetime="2018-07-13">2018-07-13 11:42:21</time> <a href="/categories/kubernets">#kubernets</a></span>
+      </div>
+      <section itemprop="text">
+        
+
+<h2 id="目录">目录</h2>
+
+<blockquote>
+<p>1、macOS 系统安装 Minikube<br />
+2、Linux 系统安装 Minikube</p>
+</blockquote>
+
+<p>Minikube Github：<a href="https://github.com/kubernetes/minikube">https://github.com/kubernetes/minikube</a><br />
+Minikube Github Release：<a href="https://github.com/kubernetes/minikube/releases">https://github.com/kubernetes/minikube/releases</a></p>
+
+<ul>
+<li>本文整理自 <a href="https://github.com/kubernetes/minikube/releases">https://github.com/kubernetes/minikube/releases</a> *</li>
+</ul>
+
+<hr />
+
+<h3 id="macos-系统安装-minikube">macOS 系统安装 Minikube</h3>
+
+<p>有两种安装方式:</p>
+
+<blockquote>
+<p>方式一: 使用 brew 安装：</p>
+</blockquote>
+
+<pre><code>brew cask install minikube
+</code></pre>
+
+<blockquote>
+<p>方式二: 直接下载</p>
+</blockquote>
+
+<pre><code>curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.28.0/minikube-darwin-amd64 &amp;&amp; chmod +x minikube &amp;&amp; sudo mv minikube /usr/local/bin/
+</code></pre>
+
+<p>这个命令包含三个部分：</p>
+
+<ol>
+<li><code>curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.28.0/minikube-darwin-amd64</code> =&gt; 下载 minikube-darwin-amd64 并重命名为 minikube<br /></li>
+<li><code>chmod +x minikube</code> =&gt; 给 minikube 赋予执行权限</li>
+<li><code>mv minikube /usr/local/bin/</code> =&gt; 将 minikube 移动到 <code>/usr/local/bin/</code> 目录下，这一步是可选的，你也可以直接手动将 minikube 的路径添加到系统的环境变量</li>
+</ol>
+
+<pre><code>fuxiaosongdeMac-mini:~ fuxiaosong$ minikube
+Minikube is a CLI tool that provisions and manages single-node Kubernetes clusters optimized for development workflows.
+
+Usage:
+  minikube [command]
+
+Available Commands:
+  addons           Modify minikube's kubernetes addons
+  cache            Add or delete an image from the local cache.
+  completion       Outputs minikube shell completion for the given shell (bash or zsh)
+  config           Modify minikube config
+  dashboard        Opens/displays the kubernetes dashboard URL for your local cluster
+  delete           Deletes a local kubernetes cluster
+  docker-env       Sets up docker env variables; similar to '$(docker-machine env)'
+  get-k8s-versions Gets the list of Kubernetes versions available for minikube when using the localkube bootstrapper
+  help             Help about any command
+  ip               Retrieves the IP address of the running cluster
+  logs             Gets the logs of the running localkube instance, used for debugging minikube, not user code
+  mount            Mounts the specified directory into minikube
+  profile          Profile sets the current minikube profile
+  service          Gets the kubernetes URL(s) for the specified service in your local cluster
+  ssh              Log into or run a command on a machine with SSH; similar to 'docker-machine ssh'
+  ssh-key          Retrieve the ssh identity key path of the specified cluster
+  start            Starts a local kubernetes cluster
+  status           Gets the status of a local kubernetes cluster
+  stop             Stops a running local kubernetes cluster
+  update-check     Print current and latest version number
+  update-context   Verify the IP address of the running cluster in kubeconfig.
+  version          Print the version of minikube
+
+Flags:
+      --alsologtostderr                  log to standard error as well as files
+  -b, --bootstrapper string              The name of the cluster bootstrapper that will set up the kubernetes cluster. (default &quot;kubeadm&quot;)
+  -h, --help                             help for minikube
+      --log_backtrace_at traceLocation   when logging hits line file:N, emit a stack trace (default :0)
+      --log_dir string                   If non-empty, write log files in this directory
+      --loglevel int                     Log level (0 = DEBUG, 5 = FATAL) (default 1)
+      --logtostderr                      log to standard error instead of files
+  -p, --profile string                   The name of the minikube VM being used.
+	This can be modified to allow for multiple minikube instances to be run independently (default &quot;minikube&quot;)
+      --stderrthreshold severity         logs at or above this threshold go to stderr (default 2)
+  -v, --v Level                          log level for V logs
+      --vmodule moduleSpec               comma-separated list of pattern=N settings for file-filtered logging
+
+Use &quot;minikube [command] --help&quot; for more information about a command.
+fuxiaosongdeMac-mini:~ fuxiaosong$
+</code></pre>
+
+<h3 id="linux-系统安装-minikube">Linux 系统安装 Minikube</h3>
+
+<pre><code>curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.28.2/minikube-linux-amd64 &amp;&amp; chmod +x minikube &amp;&amp; sudo mv minikube /usr/local/bin/
+</code></pre>
+
+<p>这个命令包含三个部分：</p>
+
+<ol>
+<li><code>curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.28.2/minikube-linux-amd64</code> =&gt; 下载 minikube-linux-amd64 并重命名为 minikube<br /></li>
+<li><code>chmod +x minikube</code> =&gt; 给 minikube 赋予执行权限</li>
+<li><code>mv minikube /usr/local/bin/</code> =&gt; 将 minikube 移动到 <code>/usr/local/bin/</code> 目录下，这一步是可选的，你也可以直接手动将 minikube 的路径添加到系统的环境变量</li>
+</ol>
+
+<hr />
+
+<p>官网 Minikube 文档阅读指南：</p>
+
+<ol>
+<li>安装：Install Minikube &mdash; <a href="https://kubernetes.cn/docs/tasks/tools/install-minikube/">https://kubernetes.cn/docs/tasks/tools/install-minikube/</a></li>
+<li>使用：Running Kubernetes Locally via Minikube &mdash; <a href="https://kubernetes.cn/docs/setup/minikube/">https://kubernetes.cn/docs/setup/minikube/</a></li>
+<li>Tutorials：Hello Minikube &mdash; <a href="https://kubernetes.cn/docs/tutorials/hello-minikube/">https://kubernetes.cn/docs/tutorials/hello-minikube/</a></li>
+</ol>
+
+      </section>
+      <div class="share">
+        <a href="https://twitter.com/share?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-07-13-install-minikube%2f&text=%e4%b8%bb%e6%b5%81%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%ae%89%e8%a3%85%20Minikube" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="twitter">
+          <img src="/assets/fonts/twitter.svg" width="18" height="18">
+        </a>
+        <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-07-13-install-minikube%2f" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="facebook">
+          <img src="/assets/fonts/facebook.svg" width="18" height="18">
+        </a>
+        <a href="https://getpocket.com/edit?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-07-13-install-minikube%2f&title=%e4%b8%bb%e6%b5%81%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%ae%89%e8%a3%85%20Minikube" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,scrollbars=yes,height=300,width=600');return false;" class="pocket">
+          <img src="/assets/fonts/pocket.svg" width="18" height="18">
+        </a>
+      </div>
+    </article>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+         
+        var disqus_shortname = 'xiaosongfu'; 
+
+         
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </main>
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+</script>
+
+</body>
+</html>
+

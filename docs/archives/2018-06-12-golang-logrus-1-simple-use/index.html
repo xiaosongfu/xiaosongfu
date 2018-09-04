@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico?cb=150118" type="image/x-icon">
+<link rel="alternate" href="/index.xml" type="application/rss+xml" title="xiaosongfu">
+<title>logrus 日志打印库 (1) 简单使用 - xiaosongfu</title>
+</head>
+<body>
+
+<div class="container">
+
+  <header role="banner">
+    <div class="row">
+      <a href="/" class="site-title">xiaosongfu</a>
+      <a href="/about/" class="site-about">About</a>
+    </div>
+  </header>
+
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <div class="entry-header">
+        <div class="bubble bubble-golanglog"></div>
+        <h1 class="entry-title" itemprop="headline">logrus 日志打印库 (1) 简单使用</h1>
+        <span class="entry-meta"><time itemprop="datePublished" datetime="2018-06-12">2018-06-12 14:33:40</time> <a href="/categories/golang">#golang</a><a href="/categories/log">#log</a></span>
+      </div>
+      <section itemprop="text">
+        
+
+<h2 id="目录">目录</h2>
+
+<blockquote>
+<p>1、简介<br />
+2、简单使用<br />
+3、基本使用<br />
+4、API 概览<br />
+5、参考文章</p>
+</blockquote>
+
+<h3 id="1-简介">1、简介</h3>
+
+<p>logrus 是结构化的，与 golang 标准库完全兼容的 golang 日志打印框架。支持 Filed 和 HOOK 机制，自带 text 和 json 两种日志输出格式。</p>
+
+<h3 id="2-简单使用">2、简单使用</h3>
+
+<p>最简单的方法就是直接使用包级暴露的打印方法。直接上代码：</p>
+
+<pre><code>package main
+
+import &quot;github.com/sirupsen/logrus&quot;
+
+func main() {
+    logrus.WithFields(logrus.Fields{
+        &quot;animal&quot;: &quot;walrus&quot;,
+        &quot;number&quot;: 1,
+        &quot;size&quot;:   10,
+    }).Info(&quot;A walrus appears&quot;)
+}
+</code></pre>
+
+<p>输出：</p>
+
+<pre><code>time=&quot;2018-06-08T15:32:35+08:00&quot; level=info msg=&quot;A walrus appears&quot; animal=walrus number=1 size=10
+</code></pre>
+
+<p>也可以将日志打印到文件：</p>
+
+<pre><code>log := logrus.New()
+file, err := os.OpenFile(&quot;logrus.log&quot;, os.O_CREATE|os.O_WRONLY, 0666)
+if err == nil {
+    log.Out = file
+} else {
+    log.Info(&quot;Failed to log to file, using default stderr&quot;)
+}
+log.Info(&quot;log-- log--&quot;)
+</code></pre>
+
+<h3 id="3-基本使用">3、基本使用</h3>
+
+<h5 id="3-1-设置日志输出格式">3.1 设置日志输出格式</h5>
+
+<p>logrus 自带两种格式 logrus.JSONFormatter{} 和 logrus.TextFormatter{}，设置方法如下：</p>
+
+<pre><code>logrus.SetFormatter(&amp;logrus.JSONFormatter{})
+logrus.Infoln(&quot;JSONFormatter&quot;)
+
+logrus.SetFormatter(&amp;logrus.TextFormatter{})
+logrus.Infoln(&quot;TextFormatter not time&quot;)
+</code></pre>
+
+<p>可以自己创建一个 logrus.Logger，并设置它的日志格式：</p>
+
+<pre><code>log := logrus.New()
+log.Formatter= new(logrus.JSONFormatter)
+log.Infoln(&quot;my logger&quot;)
+</code></pre>
+
+<h5 id="3-2-设置日志打印级别">3.2 设置日志打印级别</h5>
+
+<p>logrus 提供 6 档日志级别，分别是：</p>
+
+<pre><code>PanicLevel
+FatalLevel
+ErrorLevel
+WarnLevel
+InfoLevel
+DebugLevel
+</code></pre>
+
+<p>附一条阮一峰老师关于日志级别的博客：<br />
+@ruanyf</p>
+
+<pre><code>日志的级别（来自@dylanbeattie）
+- Fatal：网站挂了，或者极度不正常
+- Error：跟遇到的用户说对不起，可能有bug
+- Warn：记录一下，某事又发生了
+- Info：提示一切正常
+- debug：没问题，就看看堆栈
+</code></pre>
+
+<p>使用 SetLevel() 方法设置：</p>
+
+<pre><code>logrus.SetLevel(logrus.DebugLevel)
+logrus.Debug(&quot;DebugLevel&quot;)// 会打印出来
+logrus.SetLevel(logrus.ErrorLevel)
+logrus.Debug(&quot;ErrorLevel&quot;) // 不会打印出来
+</code></pre>
+
+<p>可以自己创建一个 logrus.Logger，并设置它的日志级别：</p>
+
+<pre><code>log := logrus.New()
+log.Level = logrus.DebugLevel
+log.Debug(&quot;DebugLevel&quot;)// 会打印出来
+log.Level = logrus.WarnLevel
+log.Debug(&quot;WarnLevel&quot;)// 不会打印出来
+</code></pre>
+
+<h5 id="3-3-自定义-field">3.3 自定义 Field</h5>
+
+<p>logrus 默认的日志输出有 time、level 和 msg 3个 Field，其中 time 可以不显示，方法如下：</p>
+
+<pre><code>logrus.SetFormatter(&amp;logrus.TextFormatter{DisableTimestamp: true})
+</code></pre>
+
+<p>自定义 Field 的方法如下：</p>
+
+<pre><code>// 只用一次
+logrus.WithFields(logrus.Fields{&quot;key1&quot;: &quot;11&quot;, &quot;key2&quot;:22}).Infoln(&quot;info...&quot;)
+
+// 可以多次使用
+entry := logrus.WithFields(logrus.Fields{&quot;key&quot;: &quot;value&quot;})
+entry.Infoln(&quot;info...&quot;)
+</code></pre>
+
+<h5 id="3-4-自定义-logger">3.4 自定义 Logger</h5>
+
+<p>golang 有一条约定俗成的规范，就是可以让使用者实例化的 struce 都会提供一个 New 方法，返回一个该 struce 的指针，logrus.Logger 结构体也一样，Logger 结构体的定义如下：</p>
+
+<pre><code>type Logger struct {
+	Out io.Writer
+	Hooks LevelHooks
+	Formatter Formatter
+	Level Level
+	mu MutexWrap
+	entryPool sync.Pool
+}
+</code></pre>
+
+<p>New() 方法的定义如下：</p>
+
+<pre><code>func New() *Logger {
+	return &amp;Logger{
+		Out:       os.Stderr,
+		Formatter: new(TextFormatter),
+		Hooks:     make(LevelHooks),
+		Level:     InfoLevel,
+	}
+}
+</code></pre>
+
+<p>LevelHooks 类型的定义如下：</p>
+
+<pre><code>// Internal type for storing the hooks on a logger instance.
+type LevelHooks map[Level][]Hook
+</code></pre>
+
+<p>New 一个 Logger 来使用很简单：</p>
+
+<pre><code>log := logrus.New()
+log.Debug(&quot;debug...&quot;)
+</code></pre>
+
+<h3 id="4-api-概览">4、API 概览</h3>
+
+<h5 id="4-1-包级暴露的各日志级别打印方法">4.1 包级暴露的各日志级别打印方法</h5>
+
+<pre><code>func Print(args ...interface{})
+func Printf(format string, args ...interface{})
+func Println(args ...interface{})
+
+func Debug(args ...interface{})
+func Debugf(format string, args ...interface{})
+func Debugln(args ...interface{})
+
+func Info(args ...interface{})
+func Infof(format string, args ...interface{})
+func Infoln(args ...interface{})
+
+func Warn(args ...interface{})
+func Warnf(format string, args ...interface{})
+func Warnln(args ...interface{})
+
+func Warning(args ...interface{})
+func Warningf(format string, args ...interface{})
+func Warningln(args ...interface{})
+
+func Error(args ...interface{})
+func Errorf(format string, args ...interface{})
+func Errorln(args ...interface{})
+
+func Fatal(args ...interface{})
+func Fatalf(format string, args ...interface{})
+func Fatalln(args ...interface{})
+
+func Panic(args ...interface{})
+func Panicf(format string, args ...interface{})
+func Panicln(args ...interface{})
+
+func Exit(code int)
+</code></pre>
+
+<h5 id="4-2-其他包级暴露的方法">4.2 其他包级暴露的方法</h5>
+
+<pre><code>func AddHook(hook Hook)
+
+func RegisterExitHandler(handler func())
+
+func SetFormatter(formatter Formatter)
+
+func SetLevel(level Level)
+
+func SetOutput(out io.Writer)
+</code></pre>
+
+<h3 id="5-参考文章">5、参考文章</h3>
+
+<p><a href="http://baijiahao.baidu.com/s?id=1597892026895003802">golang 日志包logrus详解</a><br />
+<a href="https://www.jianshu.com/p/5fac8bed4505">Logrus的使用</a><br />
+<a href="https://studygolang.com/articles/10534">golang日志框架logrus</a></p>
+
+<p><a href="https://github.com/sirupsen/logrus">logrus</a><br />
+<a href="https://godoc.org/github.com/sirupsen/logrus">logrus doc</a><br />
+<a href="https://github.com/rifflock/lfshook">lfshook</a><br />
+<a href="https://godoc.org/github.com/rifflock/lfshook">lfshook doc</a><br />
+<a href="https://github.com/lestrrat-go/file-rotatelogs">file-rotatelogs</a><br />
+<a href="https://godoc.org/github.com/lestrrat-go/file-rotatelogs">file-rotatelogs doc</a></p>
+
+      </section>
+      <div class="share">
+        <a href="https://twitter.com/share?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-06-12-golang-logrus-1-simple-use%2f&text=logrus%20%e6%97%a5%e5%bf%97%e6%89%93%e5%8d%b0%e5%ba%93%20%281%29%20%e7%ae%80%e5%8d%95%e4%bd%bf%e7%94%a8" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="twitter">
+          <img src="/assets/fonts/twitter.svg" width="18" height="18">
+        </a>
+        <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-06-12-golang-logrus-1-simple-use%2f" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="facebook">
+          <img src="/assets/fonts/facebook.svg" width="18" height="18">
+        </a>
+        <a href="https://getpocket.com/edit?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-06-12-golang-logrus-1-simple-use%2f&title=logrus%20%e6%97%a5%e5%bf%97%e6%89%93%e5%8d%b0%e5%ba%93%20%281%29%20%e7%ae%80%e5%8d%95%e4%bd%bf%e7%94%a8" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,scrollbars=yes,height=300,width=600');return false;" class="pocket">
+          <img src="/assets/fonts/pocket.svg" width="18" height="18">
+        </a>
+      </div>
+    </article>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+         
+        var disqus_shortname = 'xiaosongfu'; 
+
+         
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </main>
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+</script>
+
+</body>
+</html>
+

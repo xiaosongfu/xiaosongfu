@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Springboot on xiaosongfu</title>
+    <link>https://xiaosongfu.com/categories/springboot/</link>
+    <description>Recent content in Springboot on xiaosongfu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Jan 2017 19:26:01 +0000</lastBuildDate>
+    
+	<atom:link href="https://xiaosongfu.com/categories/springboot/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>为 SpringBoot 应用加持 Sentry</title>
+      <link>https://xiaosongfu.com/archives/2017-01-07-integrate-sentry-for-springboot-app/</link>
+      <pubDate>Sat, 07 Jan 2017 19:26:01 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2017-01-07-integrate-sentry-for-springboot-app/</guid>
+      <description>目录  1、配置方法
+2、参考文档
+ 1、配置方法  sentry 官网，我们可以直接使用官方的服务，也可以自己搭建服务器，对于如何搭建服务器，官方有详细的文档。
+ 1. 在 pom.xml 文件中添加依赖 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.getsentry.raven&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;raven-logback&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;7.8.1&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;  2. 配置 logback-spring.xml 文件 SpringBoot 默认使用 logback 库打印日志，为了实现将日志信息发送到 sentry 服务器，我们需要配置 sentry 的 appender，所以我们需要定义 logback 的配置文件。在 src/main/resource 下新建 logback-spring.xml 文件，并按如下内容进行配置：
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;include resource=&amp;quot;org/springframework/boot/logging/logback/base.xml&amp;quot;/&amp;gt; &amp;lt;appender name=&amp;quot;SENTRY&amp;quot; class=&amp;quot;com.getsentry.raven.logback.SentryAppender&amp;quot;&amp;gt; &amp;lt;dsn&amp;gt;https://c82bb5298ea241a5afd458b083e6acc1:40afd81d85e04135b75a22460be5bfd7@sentry.io/127340&amp;lt;/dsn&amp;gt; &amp;lt;tags&amp;gt;tag1:value1,tag2:value2&amp;lt;/tags&amp;gt; &amp;lt;filter class=&amp;quot;ch.qos.logback.classic.filter.ThresholdFilter&amp;quot;&amp;gt; &amp;lt;level&amp;gt;ERROR&amp;lt;/level&amp;gt; &amp;lt;/filter&amp;gt; &amp;lt;/appender&amp;gt; &amp;lt;root level=&amp;quot;INFO&amp;quot;&amp;gt; &amp;lt;appender-ref ref=&amp;quot;CONSOLE&amp;quot;/&amp;gt; &amp;lt;appender-ref ref=&amp;quot;FILE&amp;quot;/&amp;gt; &amp;lt;appender-ref ref=&amp;quot;SENTRY&amp;quot;/&amp;gt; &amp;lt;/root&amp;gt; &amp;lt;/configuration&amp;gt;  解释：新增了一个名字为 SENTRY 的 appender，实现将 level 为 ERROR 的日志才发送到 sentry 服务器。</description>
+    </item>
+    
+    <item>
+      <title>IntelliJ IDEA 打包 Spring Boot 项目为 jar 包</title>
+      <link>https://xiaosongfu.com/archives/2016-12-15-intellij-idea-package-springboot-project-to-jar/</link>
+      <pubDate>Thu, 15 Dec 2016 15:59:10 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2016-12-15-intellij-idea-package-springboot-project-to-jar/</guid>
+      <description>目录  1、配置
+2、打包
+ 1、配置 将 Spring Boot 项目打成 jar 包十分的简单。首先打开 File &amp;gt; Project Structure ：
+然后选中 Artifacts ，再点击 + 号，选择 JAR ，再选择 From modules with dependecies&amp;hellip; ：
+接着会打开如下界面：
+点击图中1所标识的地方，并在弹出的窗口 Select Main Class 里双击你的主类，并点击 OK 。
+接着选中如下图所示的 Build on make 复选框，最后点击底部的 Apply 和 OK。
+至此，配置就完成了。
+2、打包 点击侧边栏的 Maven Projects ，展开 Maven Projects 面板：
+双击 Lifecycle 下的 package ，接着控制台会有信息打印，如果项目没有错误，打包成功后会在项目的 target 目录下生成 &amp;lsquo;项目名-版本号.jar&amp;rsquo; 文件，他就是你要的东西了。</description>
+    </item>
+    
+  </channel>
+</rss>

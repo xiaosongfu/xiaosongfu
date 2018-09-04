@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico?cb=150118" type="image/x-icon">
+<link rel="alternate" href="/index.xml" type="application/rss+xml" title="xiaosongfu">
+<title>IntelliJ IDEA 打包 Spring Boot 项目为 jar 包 - xiaosongfu</title>
+</head>
+<body>
+
+<div class="container">
+
+  <header role="banner">
+    <div class="row">
+      <a href="/" class="site-title">xiaosongfu</a>
+      <a href="/about/" class="site-about">About</a>
+    </div>
+  </header>
+
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <div class="entry-header">
+        <div class="bubble bubble-springboot"></div>
+        <h1 class="entry-title" itemprop="headline">IntelliJ IDEA 打包 Spring Boot 项目为 jar 包</h1>
+        <span class="entry-meta"><time itemprop="datePublished" datetime="2016-12-15">2016-12-15 15:59:10</time> <a href="/categories/springboot">#springboot</a></span>
+      </div>
+      <section itemprop="text">
+        
+
+<h2 id="目录">目录</h2>
+
+<blockquote>
+<p>1、配置<br />
+2、打包</p>
+</blockquote>
+
+<h3 id="1-配置">1、配置</h3>
+
+<p>将 Spring Boot 项目打成 jar 包十分的简单。首先打开 File &gt; Project Structure ：</p>
+
+<p><img src="https://lollipop.xiaosongfu.com/blog/201612/springboot01.jpg" alt="你看不到我^_^" /></p>
+
+<p>然后选中 Artifacts ，再点击 + 号，选择 JAR ，再选择 From modules with dependecies&hellip; ：</p>
+
+<p><img src="https://lollipop.xiaosongfu.com/blog/201612/springboot02.jpg" alt="你看不到我^_^" /></p>
+
+<p>接着会打开如下界面：</p>
+
+<p><img src="https://lollipop.xiaosongfu.com/blog/201612/springboot03.jpg" alt="你看不到我^_^" /></p>
+
+<p>点击图中1所标识的地方，并在弹出的窗口 Select Main Class 里双击你的主类，并点击 OK 。<br />
+接着选中如下图所示的 Build on make 复选框，最后点击底部的 Apply 和 OK。</p>
+
+<p><img src="https://lollipop.xiaosongfu.com/blog/201612/springboot04.jpg" alt="你看不到我^_^" /></p>
+
+<p>至此，配置就完成了。</p>
+
+<h3 id="2-打包">2、打包</h3>
+
+<p>点击侧边栏的 Maven Projects ，展开 Maven Projects 面板：</p>
+
+<p><img src="https://lollipop.xiaosongfu.com/blog/201612/springboot05.jpg" alt="你看不到我^_^" /></p>
+
+<p>双击 Lifecycle 下的 package ，接着控制台会有信息打印，如果项目没有错误，打包成功后会在项目的 target  目录下生成 &lsquo;项目名-版本号.jar&rsquo; 文件，他就是你要的东西了。</p>
+
+<p><img src="https://lollipop.xiaosongfu.com/blog/201612/springboot06.jpg" alt="你看不到我^_^" /></p>
+
+      </section>
+      <div class="share">
+        <a href="https://twitter.com/share?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2016-12-15-intellij-idea-package-springboot-project-to-jar%2f&text=IntelliJ%20IDEA%20%e6%89%93%e5%8c%85%20Spring%20Boot%20%e9%a1%b9%e7%9b%ae%e4%b8%ba%20jar%20%e5%8c%85" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="twitter">
+          <img src="/assets/fonts/twitter.svg" width="18" height="18">
+        </a>
+        <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fxiaosongfu.com%2farchives%2f2016-12-15-intellij-idea-package-springboot-project-to-jar%2f" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="facebook">
+          <img src="/assets/fonts/facebook.svg" width="18" height="18">
+        </a>
+        <a href="https://getpocket.com/edit?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2016-12-15-intellij-idea-package-springboot-project-to-jar%2f&title=IntelliJ%20IDEA%20%e6%89%93%e5%8c%85%20Spring%20Boot%20%e9%a1%b9%e7%9b%ae%e4%b8%ba%20jar%20%e5%8c%85" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,scrollbars=yes,height=300,width=600');return false;" class="pocket">
+          <img src="/assets/fonts/pocket.svg" width="18" height="18">
+        </a>
+      </div>
+    </article>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+         
+        var disqus_shortname = 'xiaosongfu'; 
+
+         
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </main>
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+</script>
+
+</body>
+</html>
+

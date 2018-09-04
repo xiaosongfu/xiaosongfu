@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Request on xiaosongfu</title>
+    <link>https://xiaosongfu.com/tags/request/</link>
+    <description>Recent content in Request on xiaosongfu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 28 Apr 2018 16:45:08 +0000</lastBuildDate>
+    
+	<atom:link href="https://xiaosongfu.com/tags/request/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>自己搭建 requestbin 服务</title>
+      <link>https://xiaosongfu.com/archives/2018-04-28-install-requestbin-service/</link>
+      <pubDate>Sat, 28 Apr 2018 16:45:08 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-04-28-install-requestbin-service/</guid>
+      <description>目录  1、requestbin 简介
+2、开始安装
+3、其他
+ 1、requestbin 简介 requestbin 官网：requestbin
+ 1 安装 docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose sudo chmod +x /usr/local/bin/docker-compose  参考：install-compose
+2 build 镜像
+按照 Github 仓库的 READMe 文档安装即可，摘录如下：
+ Deploy your own instance using Docker On the server/machine you want to host this, you&amp;rsquo;ll first need a machine with docker and docker-compose installed, then grab the RequestBin source using git:</description>
+    </item>
+    
+  </channel>
+</rss>

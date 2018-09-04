@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico?cb=150118" type="image/x-icon">
+<link rel="alternate" href="/index.xml" type="application/rss+xml" title="xiaosongfu">
+<title>Nginx-PHP 的安装 - xiaosongfu</title>
+</head>
+<body>
+
+<div class="container">
+
+  <header role="banner">
+    <div class="row">
+      <a href="/" class="site-title">xiaosongfu</a>
+      <a href="/about/" class="site-about">About</a>
+    </div>
+  </header>
+
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <div class="entry-header">
+        <div class="bubble bubble-nginxphp"></div>
+        <h1 class="entry-title" itemprop="headline">Nginx-PHP 的安装</h1>
+        <span class="entry-meta"><time itemprop="datePublished" datetime="2016-11-26">2016-11-26 18:17:43</time> <a href="/categories/nginx">#nginx</a><a href="/categories/php">#php</a></span>
+      </div>
+      <section itemprop="text">
+        
+
+<h2 id="目录">目录</h2>
+
+<blockquote>
+<p>1、php的安装<br />
+2、nginx的安装</p>
+</blockquote>
+
+<p><img src="https://lollipop.xiaosongfu.com/blog/201611/nginx-php-fpm.png" alt="nginx-php-fpm.png" /></p>
+
+<h3 id="1-php的安装">1、php的安装</h3>
+
+<h4 id="1-1-下载php源码包">1.1 下载PHP源码包</h4>
+
+<p>进入php下载页面，根据自己的喜好，下载任意一种压缩格式的源码包都可以。</p>
+
+<p><img src="https://lollipop.xiaosongfu.com/blog/201611/php_download_1.png" alt="php_download_1.png" /></p>
+
+<p>选择一个就近的站点下载源码包即可。</p>
+
+<p><img src="https://lollipop.xiaosongfu.com/blog/201611/php_download_2.png" alt="php_download_2.png" /></p>
+
+<h4 id="1-2-安装依赖">1.2 安装依赖</h4>
+
+<pre><code>yum install libxml2 libxml2-devel
+yum install bzip2 bzip2-devel
+yum install curl curl-devel
+yum install libmcrypt libmcrypt-devel mcrypt mhash
+yum install readline readline-devel
+</code></pre>
+
+<p>如果不先安装这些依赖，则在执行configure命令时会报错误，所以最好的方式是先安装依赖。</p>
+
+<h4 id="1-3-编译安装php">1.3 编译安装PHP</h4>
+
+<p>①先解压php源码包：tar -zxvf php<br />
+②切换到解压后的目录下，执行configure命令：</p>
+
+<pre><code>./configure \
+--prefix=/usr/local/php \
+--enable-fpm
+</code></pre>
+
+<p>如果没有错误的话，结果如下图：</p>
+
+<p><img src="https://lollipop.xiaosongfu.com/blog/201611/php1.png" alt="php1.png" /></p>
+
+<p>③没有错误就继续下一步，即是编译：</p>
+
+<pre><code>make
+</code></pre>
+
+<p>如果没有错误的话，结果如下图：</p>
+
+<p><img src="https://lollipop.xiaosongfu.com/blog/201611/php2.png" alt="php2.png" /></p>
+
+<p>④没有错误就继续下一步，即是安装：</p>
+
+<pre><code>make install
+</code></pre>
+
+<p>如果没有错误的话，结果如下图：</p>
+
+<p><img src="https://lollipop.xiaosongfu.com/blog/201611/php3.png" alt="php3.png" /></p>
+
+<h4 id="1-4-启动php-fpm">1.4 启动PHP-FPM</h4>
+
+<p>PHP-FPM是一个PHP FastCGI管理器，PHP-FPM提供了更好的PHP进程管理方式，可以有效控制内存和进程、可以平滑重载PHP配置，比spawn-fcgi具有更多优点，所以被PHP官 方收录了。<br />
+新版PHP已经集成php-fpm了，不再作为第三方包。<br />
+在./configure的时候带 –enable-fpm参数即可开启PHP-FPM。</p>
+
+<p><img src="https://lollipop.xiaosongfu.com/blog/201611/php-fpm.png" alt="php-fpm.png" /></p>
+
+<p>A、配置和启动php-fpm的方法如下：</p>
+
+<pre><code>cd /usr/local/php/etc
+cp php-fpm.conf.default php-fpm.conf
+/usr/local/php/sbin/php-fpm
+</code></pre>
+
+<p>编译安装完成后，php-fpm 的备份配置文件在 /usr/local/php/etc 目录下，所以先切换到该目录，然后使用 cp 命令创建其配置文件 php-fpm.conf，最后通过执行 /usr/local/php/sbin/php-fpm 命令来启动 php-fpm，启动后他默认监听9000端口。</p>
+
+<p>B、nginx 将 php 文件交给 php 引擎来处理是需要配置的，就如 apache 和 php 配合的时候 apache 需要载人 php 模块类似，为了使 nginx 和 php 配合工作，需要在 nginx 的配置文件中配置，示例配置如下：</p>
+
+<pre><code>server {
+        listen       80;
+
+        server_name nginx.ifuxs.cn;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   html/nginx;
+            index  index.php index.htm;
+        }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ .php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        location ~ .php$ {
+            root           html/nginx;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            include        fastcgi_params;
+        }
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /.ht {
+        #    deny  all;
+        #}
+    }
+</code></pre>
+
+<p>在配置的时候，它对php文件报了File not found.错误，经过排除发现是fastcgi_param的问题，nginx编译安装完成后是</p>
+
+<pre><code>fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+</code></pre>
+
+<p>需要修改为：</p>
+
+<pre><code>fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+</code></pre>
+
+<h4 id="1-5-完成">1.5 完成</h4>
+
+<p>至此，PHP的源码编译安装就完成了</p>
+
+<h3 id="2-nginx的安装">2、nginx的安装</h3>
+
+<p>Nginx服务器的性能较高的原因是其采用了epoll的IO模型有关，apache和IIS都是采用的select的IO模型。其他的IO模型还有kqueue等。</p>
+
+<h4 id="2-1-下载源代码">2.1 下载源代码</h4>
+
+<p><img src="https://lollipop.xiaosongfu.com/blog/201611/nginx_download.png" alt="nginx_download.png" /></p>
+
+<p>命令示例：</p>
+
+<pre><code>wget wget http://nginx.org/download/nginx-1.8.0.tar.gz
+</code></pre>
+
+<h4 id="2-2-解压源码">2.2 解压源码</h4>
+
+<pre><code>tar -zxvf nginx-1.8.0.tar.gz
+</code></pre>
+
+<h4 id="2-3-编译安装">2.3 编译安装</h4>
+
+<p>①依赖的安装<br />
+I：为了支持https协议，需要OpenSSL的支持，所以需要下载<a href="http://www.openssl.org/">OpenSSL</a>源码，但不要求安装;<br />
+II：nginx的rewrite功能模块和配置文件中的location都需要使用正则表达式，所以也需要<a href="http://www.pcre.org/">pcre</a>的支持，只需下载pcre源码，不要求安装;<br />
+III：http响应头的压缩需要zlib库的支持，所以还需要下载<a href="http://zlib.net/">zlib</a>库，但不要求安装。<br />
+这3个库的源码只需到官网下载，然后解压即可，在编译安装nginx的时候，带上参数：</p>
+
+<pre><code>--with-pcre=/usr/local/src/pcre-8.21
+--with-zlib=/usr/local/src/zlib-1.2.8
+--with-openssl=/usr/local/src/openssl-1.0.1c
+</code></pre>
+
+<p>即可，但是需要注意版本号要为自己所下载的源码包对应的版本号。</p>
+
+<p>②执行configure命令
+configure命令如下：</p>
+
+<pre><code>./configure \
+--prefix=/usr/local/nginx \
+--sbin-path=/usr/local/nginx/sbin/nginx \
+--conf-path=/usr/local/nginx/conf/nginx.conf \
+--error-log-path=/usr/local/nginx/logs/error.log \
+--http-log-path=/usr/local/nginx/logs/access.log \
+--pid-path=/usr/local/nginx/var/nginx.pid \
+--with-http_ssl_module \
+--with-http_gzip_static_module \
+--with-http_stub_status_module \
+--with-pcre=/usr/local/src/pcre-8.36 \
+--with-zlib=/usr/local/src/zlib-1.2.8 \
+--with-openssl=/usr/local/src/openssl-1.0.1p
+</code></pre>
+
+<p>③编译：</p>
+
+<pre><code>make
+</code></pre>
+
+<p>④安装：</p>
+
+<pre><code>make install
+</code></pre>
+
+<h4 id="2-4-nginx服务的启动和关闭">2.4 NGINX服务的启动和关闭</h4>
+
+<p>①检查配置文件是否正确：</p>
+
+<pre><code>/usr/local/nginx/sbin/nginx -t
+</code></pre>
+
+<p>②启动：</p>
+
+<pre><code># 使用默认的配置文件启动服务
+/usr/local/nginx/sbin/nginx
+#指定配置文件来启动服务
+/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+</code></pre>
+
+<p>③停止：</p>
+
+<pre><code>/usr/local/nginx/sbin/nginx -s stop
+</code></pre>
+
+<p>④修改配置文件后重新加载配置文件：</p>
+
+<pre><code>/usr/local/nginx/sbin/nginx -s reload #重启，不改变配置文件
+</code></pre>
+
+      </section>
+      <div class="share">
+        <a href="https://twitter.com/share?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2016-11-26-install-nginx-and-php%2f&text=Nginx-PHP%20%e7%9a%84%e5%ae%89%e8%a3%85" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="twitter">
+          <img src="/assets/fonts/twitter.svg" width="18" height="18">
+        </a>
+        <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fxiaosongfu.com%2farchives%2f2016-11-26-install-nginx-and-php%2f" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="facebook">
+          <img src="/assets/fonts/facebook.svg" width="18" height="18">
+        </a>
+        <a href="https://getpocket.com/edit?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2016-11-26-install-nginx-and-php%2f&title=Nginx-PHP%20%e7%9a%84%e5%ae%89%e8%a3%85" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,scrollbars=yes,height=300,width=600');return false;" class="pocket">
+          <img src="/assets/fonts/pocket.svg" width="18" height="18">
+        </a>
+      </div>
+    </article>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+         
+        var disqus_shortname = 'xiaosongfu'; 
+
+         
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </main>
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+</script>
+
+</body>
+</html>
+

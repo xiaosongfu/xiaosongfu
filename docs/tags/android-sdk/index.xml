@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android Sdk on xiaosongfu</title>
+    <link>https://xiaosongfu.com/tags/android-sdk/</link>
+    <description>Recent content in Android Sdk on xiaosongfu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 31 Jul 2017 13:40:47 +0000</lastBuildDate>
+    
+	<atom:link href="https://xiaosongfu.com/tags/android-sdk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用命令行安装 Android SDK</title>
+      <link>https://xiaosongfu.com/archives/2017-07-31-install-android-sdk-with-terminal/</link>
+      <pubDate>Mon, 31 Jul 2017 13:40:47 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2017-07-31-install-android-sdk-with-terminal/</guid>
+      <description>目录  1、简述
+2、下载基本的 Android 命令行工具
+3、android &amp;amp; sdkmanager 命令的使用
+ 1、简述 通常时候我们需要在 Linux 服务器上搭建 Android 打包环境，目的是为了使用 Jenkins 来进行 CI 或 CD ，但是差不多所有的 Linux 服务器都是 mini 化安装的，即是最小化安装，是没有桌面环境的，意味着我们安装软件都得通过命令行安装。当然你也可以把你本地 Linux 环境的 Android SKD 打包后 scp 到服务器，但是没必要这么麻烦，直接通过命令行安装也是十分简单的。
+2、下载基本的 Android 命令行工具 先来个链接：https://developer.android.com/studio/index.html ,打开后滑到最底部：
+下载完成后的文件为：sdk-tools-linux-3859397.zip，解压它：
+3、android &amp;amp; sdkmanager 命令的使用 3.1 安装 platform-tools 执行命令安装 platform-tools
+tools/android update sdk --no-ui  运行该命令后，首先需要同意协议，然后就会自动开始下载 platform-tools ,下载完成后如下：
+3.2 查看当前安装了哪些 Android SDK 组件 执行命令:
+tools/bin/sdkmanager --list  可以查看当前已经安装了哪些 SDK 组件，运行如下：</description>
+    </item>
+    
+  </channel>
+</rss>

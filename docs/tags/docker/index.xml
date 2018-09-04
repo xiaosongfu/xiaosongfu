@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on xiaosongfu</title>
+    <link>https://xiaosongfu.com/tags/docker/</link>
+    <description>Recent content in Docker on xiaosongfu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 07 Dec 2017 17:15:35 +0000</lastBuildDate>
+    
+	<atom:link href="https://xiaosongfu.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>质量检测平台 SonarQube：1 使用 Docker 搭建服务器</title>
+      <link>https://xiaosongfu.com/archives/2017-12-07-sonarqube-1-install-using-docker/</link>
+      <pubDate>Thu, 07 Dec 2017 17:15:35 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2017-12-07-sonarqube-1-install-using-docker/</guid>
+      <description>目录  1、使用 Docker 搭建 SonarQube 服务
+ 1、使用 Docker 搭建 SonarQube 服务  SonarQube官网： SonarQube
+官网介绍：The leading product for CONTINUOUS CODE QUALITY
+ 质量检测平台 SonarQube 用于管理源代码的质量，可以从七个维度检测代码质量，通过插件形式，可以支持包括java,C#,C/C++,PL/SQL,Cobol,JavaScrip,Groovy等等二十几种编程语言的代码质量管理与检测。
+SonarQube 由四大组件组成，包括一个 SonarQube 服务器，一个保存 SonarQube 服务器实例配置和所以项目代码质量报告的 SonarQube 数据库，还有 SonarQube服务器安装的各种插件，以及一个或多个运行在构建系统或持续集成系统上的用于分析项目的 SonarQube Scanners 。官网描述如下：
+ Architecture The SonarQube Platform is made of 4 components: 1. One SonarQube Server starting 3 main processes:
+* a Web Server for developers, managers to browse quality snapshots and configure the SonarQube instance * a Search Server based on Elasticsearch to back searches from the UI * a Compute Engine Server in charge of processing code analysis reports and saving them in the SonarQube Database 2.</description>
+    </item>
+    
+    <item>
+      <title>docker push 简记</title>
+      <link>https://xiaosongfu.com/archives/2017-12-07-docker-push-simple-use/</link>
+      <pubDate>Thu, 07 Dec 2017 16:18:18 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2017-12-07-docker-push-simple-use/</guid>
+      <description>目录  1、简记
+2、注意事项
+ 1、简记 使用 docker push 命令将 image 推送到 Docker Hub 之前需要现在 Docker Hub 上注册账号并在命令行登录完成，输入 docker login 后回车，并按照提示输入用户名和密码即可登录成功。
+如果直接推送 image ，则会报错，如下：
+[root@MyCloudServer pos-master]# docker push pos The push refers to a repository [docker.io/library/pos] c4c67b92de11: Preparing 50f193fb6c79: Preparing d7e0a9307630: Preparing f73d86c10bc2: Preparing c59fa6cbcbd9: Preparing 8d4d1ab5ff74: Waiting denied: requested access to the resource is denied [root@MyCloudServer pos-master]#  原因是因为 image 的 REPOSITORY 属性需要和你的 Docker Hub 用户名相关，比如：xiaosongfu/pos，而不能只是 pos 。可以通过添加 tag 的方法来解决。添加 tag 的时候可以显式指定一个 tag ，也可以不指定而使用默认的 latest。先看一下 docker tag 命令的使用方法：</description>
+    </item>
+    
+  </channel>
+</rss>

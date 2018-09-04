@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on xiaosongfu</title>
+    <link>https://xiaosongfu.com/tags/</link>
+    <description>Recent content in Tags on xiaosongfu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 31 Jul 2017 13:40:47 +0000</lastBuildDate>
+    
+	<atom:link href="https://xiaosongfu.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Android</title>
+      <link>https://xiaosongfu.com/tags/android/</link>
+      <pubDate>Mon, 31 Jul 2017 13:40:47 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Android Sdk</title>
+      <link>https://xiaosongfu.com/tags/android-sdk/</link>
+      <pubDate>Mon, 31 Jul 2017 13:40:47 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/android-sdk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Android Studio</title>
+      <link>https://xiaosongfu.com/tags/android-studio/</link>
+      <pubDate>Mon, 05 Dec 2016 11:13:47 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/android-studio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Caddy</title>
+      <link>https://xiaosongfu.com/tags/caddy/</link>
+      <pubDate>Mon, 06 Aug 2018 15:55:18 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/caddy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ci</title>
+      <link>https://xiaosongfu.com/tags/ci/</link>
+      <pubDate>Tue, 21 Feb 2017 12:15:01 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/ci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dartlang</title>
+      <link>https://xiaosongfu.com/tags/dartlang/</link>
+      <pubDate>Tue, 26 Jun 2018 17:54:31 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/dartlang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://xiaosongfu.com/tags/docker/</link>
+      <pubDate>Thu, 07 Dec 2017 17:15:35 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docs</title>
+      <link>https://xiaosongfu.com/tags/docs/</link>
+      <pubDate>Tue, 21 Feb 2017 13:37:16 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/docs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Drone</title>
+      <link>https://xiaosongfu.com/tags/drone/</link>
+      <pubDate>Mon, 27 Aug 2018 17:17:07 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/drone/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Flutter</title>
+      <link>https://xiaosongfu.com/tags/flutter/</link>
+      <pubDate>Fri, 06 Jul 2018 10:17:34 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/flutter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go Module</title>
+      <link>https://xiaosongfu.com/tags/go-module/</link>
+      <pubDate>Mon, 03 Sep 2018 11:44:34 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/go-module/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golang</title>
+      <link>https://xiaosongfu.com/tags/golang/</link>
+      <pubDate>Tue, 26 Jun 2018 17:54:16 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gradle</title>
+      <link>https://xiaosongfu.com/tags/gradle/</link>
+      <pubDate>Tue, 21 Feb 2017 12:15:01 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/gradle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jar</title>
+      <link>https://xiaosongfu.com/tags/jar/</link>
+      <pubDate>Thu, 15 Dec 2016 15:59:10 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/jar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://xiaosongfu.com/tags/java/</link>
+      <pubDate>Sat, 26 Nov 2016 16:12:25 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jenkins</title>
+      <link>https://xiaosongfu.com/tags/jenkins/</link>
+      <pubDate>Tue, 21 Feb 2017 12:15:01 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/jenkins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubectl</title>
+      <link>https://xiaosongfu.com/tags/kubectl/</link>
+      <pubDate>Thu, 16 Aug 2018 11:07:23 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/kubectl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernets</title>
+      <link>https://xiaosongfu.com/tags/kubernets/</link>
+      <pubDate>Thu, 16 Aug 2018 11:07:23 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/kubernets/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Letsencrypt</title>
+      <link>https://xiaosongfu.com/tags/letsencrypt/</link>
+      <pubDate>Sat, 26 Nov 2016 16:24:12 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/letsencrypt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://xiaosongfu.com/tags/linux/</link>
+      <pubDate>Sat, 28 Apr 2018 13:59:45 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Log</title>
+      <link>https://xiaosongfu.com/tags/log/</link>
+      <pubDate>Tue, 12 Jun 2018 14:41:20 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/log/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Login</title>
+      <link>https://xiaosongfu.com/tags/login/</link>
+      <pubDate>Sat, 28 Apr 2018 13:59:45 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/login/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Logrus</title>
+      <link>https://xiaosongfu.com/tags/logrus/</link>
+      <pubDate>Tue, 12 Jun 2018 14:41:20 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/logrus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Macaca</title>
+      <link>https://xiaosongfu.com/tags/macaca/</link>
+      <pubDate>Tue, 10 Jan 2017 13:23:14 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/macaca/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Minikube</title>
+      <link>https://xiaosongfu.com/tags/minikube/</link>
+      <pubDate>Fri, 13 Jul 2018 11:42:21 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/minikube/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nginx</title>
+      <link>https://xiaosongfu.com/tags/nginx/</link>
+      <pubDate>Sat, 26 Nov 2016 18:17:43 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Php</title>
+      <link>https://xiaosongfu.com/tags/php/</link>
+      <pubDate>Sat, 26 Nov 2016 18:17:43 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Push</title>
+      <link>https://xiaosongfu.com/tags/push/</link>
+      <pubDate>Thu, 07 Dec 2017 16:18:18 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/push/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rclone</title>
+      <link>https://xiaosongfu.com/tags/rclone/</link>
+      <pubDate>Tue, 31 Jul 2018 16:28:05 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/rclone/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Request</title>
+      <link>https://xiaosongfu.com/tags/request/</link>
+      <pubDate>Sat, 28 Apr 2018 16:45:08 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/request/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sentry</title>
+      <link>https://xiaosongfu.com/tags/sentry/</link>
+      <pubDate>Sat, 07 Jan 2017 19:26:01 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/sentry/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sonarqube</title>
+      <link>https://xiaosongfu.com/tags/sonarqube/</link>
+      <pubDate>Thu, 07 Dec 2017 17:15:35 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/sonarqube/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Springboot</title>
+      <link>https://xiaosongfu.com/tags/springboot/</link>
+      <pubDate>Sat, 07 Jan 2017 19:26:01 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/springboot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Supervisor</title>
+      <link>https://xiaosongfu.com/tags/supervisor/</link>
+      <pubDate>Mon, 06 Aug 2018 10:44:45 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/supervisor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ui Test</title>
+      <link>https://xiaosongfu.com/tags/ui-test/</link>
+      <pubDate>Tue, 10 Jan 2017 13:23:14 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/ui-test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unison</title>
+      <link>https://xiaosongfu.com/tags/unison/</link>
+      <pubDate>Tue, 07 Aug 2018 15:39:31 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/unison/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Zxing</title>
+      <link>https://xiaosongfu.com/tags/zxing/</link>
+      <pubDate>Sat, 17 Dec 2016 14:34:27 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/tags/zxing/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Flutter on xiaosongfu</title>
+    <link>https://xiaosongfu.com/tags/flutter/</link>
+    <description>Recent content in Flutter on xiaosongfu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 06 Jul 2018 10:17:34 +0800</lastBuildDate>
+    
+	<atom:link href="https://xiaosongfu.com/tags/flutter/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>安装 Flutter SDK</title>
+      <link>https://xiaosongfu.com/archives/2018-07-06-install-fllutter-sdk/</link>
+      <pubDate>Fri, 06 Jul 2018 10:17:34 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-07-06-install-fllutter-sdk/</guid>
+      <description>The Flutter SDK includes Flutter’s engine, framework, widgets, tools, and a Dart SDK.
+Flutter SDK 包括 Flutter 的引擎、框架、widgets、工具和 Dart SDK。
+ 以 macOS 系统为例
+ 1、配置国内的镜像站点 国内用户建议配置一个与官方同步的可信的镜像站点，帮助 Flutter 命令行工具到该镜像站点下载其所需的资源，来加速安装和使用，为此需要设置两个环境变量：“PUB_HOSTED_URL”和“FLUTTER_STORAGE_BASE_URL”，然后再运行 Flutter 命令行工具。配置方法如下：
+export PUB_HOSTED_URL=https://pub.flutter-io.cn export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn  目前可用的镜像站点有两个：
+ 上海交通大学 Linux 用户组
+FLUTTER_STORAGE_BASE_URL: https://mirrors.sjtug.sjtu.edu.cn
+PUB_HOSTED_URL: https://dart-pub.mirrors.sjtug.sjtu.edu.cn
+ Flutter 社区
+FLUTTER_STORAGE_BASE_URL: https://storage.flutter-io.cn
+PUB_HOSTED_URL: https://pub.flutter-io.cn
+  更多信息请翻阅：Using Flutter in China | Flutter 社区中文资源-使用镜像
+2、安装 Flutter SDK 安装方式有两种，一种是直接 clone 官方仓库 git clone -b beta https://github.</description>
+    </item>
+    
+  </channel>
+</rss>

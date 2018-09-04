@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on xiaosongfu</title>
+    <link>https://xiaosongfu.com/categories/</link>
+    <description>Recent content in Categories on xiaosongfu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 31 Jul 2017 13:40:47 +0000</lastBuildDate>
+    
+	<atom:link href="https://xiaosongfu.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Android</title>
+      <link>https://xiaosongfu.com/categories/android/</link>
+      <pubDate>Mon, 31 Jul 2017 13:40:47 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Caddy</title>
+      <link>https://xiaosongfu.com/categories/caddy/</link>
+      <pubDate>Mon, 06 Aug 2018 15:55:18 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/caddy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dartlang</title>
+      <link>https://xiaosongfu.com/categories/dartlang/</link>
+      <pubDate>Tue, 26 Jun 2018 17:54:31 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/dartlang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://xiaosongfu.com/categories/docker/</link>
+      <pubDate>Thu, 07 Dec 2017 16:18:18 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Drone</title>
+      <link>https://xiaosongfu.com/categories/drone/</link>
+      <pubDate>Mon, 27 Aug 2018 17:17:07 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/drone/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Flutter</title>
+      <link>https://xiaosongfu.com/categories/flutter/</link>
+      <pubDate>Fri, 06 Jul 2018 10:17:34 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/flutter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>https://xiaosongfu.com/categories/go/</link>
+      <pubDate>Mon, 03 Sep 2018 11:44:34 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golang</title>
+      <link>https://xiaosongfu.com/categories/golang/</link>
+      <pubDate>Tue, 26 Jun 2018 17:54:16 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gradle</title>
+      <link>https://xiaosongfu.com/categories/gradle/</link>
+      <pubDate>Tue, 21 Feb 2017 12:15:01 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/gradle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://xiaosongfu.com/categories/java/</link>
+      <pubDate>Sat, 26 Nov 2016 16:12:25 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jenkins</title>
+      <link>https://xiaosongfu.com/categories/jenkins/</link>
+      <pubDate>Tue, 21 Feb 2017 12:15:01 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/jenkins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernets</title>
+      <link>https://xiaosongfu.com/categories/kubernets/</link>
+      <pubDate>Thu, 16 Aug 2018 11:07:23 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/kubernets/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Letsencrypt</title>
+      <link>https://xiaosongfu.com/categories/letsencrypt/</link>
+      <pubDate>Sat, 26 Nov 2016 16:24:12 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/letsencrypt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://xiaosongfu.com/categories/linux/</link>
+      <pubDate>Sat, 28 Apr 2018 13:59:45 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Log</title>
+      <link>https://xiaosongfu.com/categories/log/</link>
+      <pubDate>Tue, 12 Jun 2018 14:41:20 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/log/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Macaca</title>
+      <link>https://xiaosongfu.com/categories/macaca/</link>
+      <pubDate>Tue, 10 Jan 2017 13:23:14 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/macaca/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nginx</title>
+      <link>https://xiaosongfu.com/categories/nginx/</link>
+      <pubDate>Sat, 26 Nov 2016 18:17:43 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Php</title>
+      <link>https://xiaosongfu.com/categories/php/</link>
+      <pubDate>Sat, 26 Nov 2016 18:17:43 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rclone</title>
+      <link>https://xiaosongfu.com/categories/rclone/</link>
+      <pubDate>Tue, 31 Jul 2018 16:28:05 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/rclone/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Request</title>
+      <link>https://xiaosongfu.com/categories/request/</link>
+      <pubDate>Sat, 28 Apr 2018 16:45:08 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/request/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sonarqube</title>
+      <link>https://xiaosongfu.com/categories/sonarqube/</link>
+      <pubDate>Thu, 07 Dec 2017 17:15:35 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/sonarqube/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Springboot</title>
+      <link>https://xiaosongfu.com/categories/springboot/</link>
+      <pubDate>Sat, 07 Jan 2017 19:26:01 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/springboot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Supervisor</title>
+      <link>https://xiaosongfu.com/categories/supervisor/</link>
+      <pubDate>Mon, 06 Aug 2018 10:44:45 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/supervisor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unison</title>
+      <link>https://xiaosongfu.com/categories/unison/</link>
+      <pubDate>Tue, 07 Aug 2018 15:39:31 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/unison/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Zxing</title>
+      <link>https://xiaosongfu.com/categories/zxing/</link>
+      <pubDate>Sat, 17 Dec 2016 14:34:27 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/categories/zxing/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Minikube on xiaosongfu</title>
+    <link>https://xiaosongfu.com/tags/minikube/</link>
+    <description>Recent content in Minikube on xiaosongfu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 Jul 2018 11:42:21 +0800</lastBuildDate>
+    
+	<atom:link href="https://xiaosongfu.com/tags/minikube/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>主流操作系统安装 Minikube</title>
+      <link>https://xiaosongfu.com/archives/2018-07-13-install-minikube/</link>
+      <pubDate>Fri, 13 Jul 2018 11:42:21 +0800</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2018-07-13-install-minikube/</guid>
+      <description>目录  1、macOS 系统安装 Minikube
+2、Linux 系统安装 Minikube
+ Minikube Github：https://github.com/kubernetes/minikube
+Minikube Github Release：https://github.com/kubernetes/minikube/releases
+ 本文整理自 https://github.com/kubernetes/minikube/releases *  macOS 系统安装 Minikube 有两种安装方式:
+ 方式一: 使用 brew 安装：
+ brew cask install minikube   方式二: 直接下载
+ curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.28.0/minikube-darwin-amd64 &amp;amp;&amp;amp; chmod +x minikube &amp;amp;&amp;amp; sudo mv minikube /usr/local/bin/  这个命令包含三个部分：
+ curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.28.0/minikube-darwin-amd64 =&amp;gt; 下载 minikube-darwin-amd64 并重命名为 minikube
+ chmod +x minikube =&amp;gt; 给 minikube 赋予执行权限 mv minikube /usr/local/bin/ =&amp;gt; 将 minikube 移动到 /usr/local/bin/ 目录下，这一步是可选的，你也可以直接手动将 minikube 的路径添加到系统的环境变量  fuxiaosongdeMac-mini:~ fuxiaosong$ minikube Minikube is a CLI tool that provisions and manages single-node Kubernetes clusters optimized for development workflows.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Letsencrypt on xiaosongfu</title>
+    <link>https://xiaosongfu.com/categories/letsencrypt/</link>
+    <description>Recent content in Letsencrypt on xiaosongfu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 26 Nov 2016 16:24:12 +0000</lastBuildDate>
+    
+	<atom:link href="https://xiaosongfu.com/categories/letsencrypt/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Letsencrypt的简单使用 2-证书的更新</title>
+      <link>https://xiaosongfu.com/archives/2016-11-26-letsencrypt-simeple-use-2-update-pem-and-key-files/</link>
+      <pubDate>Sat, 26 Nov 2016 16:24:12 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2016-11-26-letsencrypt-simeple-use-2-update-pem-and-key-files/</guid>
+      <description> 待填坑&amp;hellip;
+ </description>
+    </item>
+    
+    <item>
+      <title>Letsencrypt的简单使用 1-证书的生成和配置</title>
+      <link>https://xiaosongfu.com/archives/2016-11-26-letsencrypt-simeple-use-1-generate-pem-and-key-files/</link>
+      <pubDate>Sat, 26 Nov 2016 16:23:47 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2016-11-26-letsencrypt-simeple-use-1-generate-pem-and-key-files/</guid>
+      <description>目录  1、下载letsencrypt客户端
+2、生成证书
+3、配置nginx的https服务器
+ 1、下载letsencrypt客户端 需要使用git命令下载letsencrypt客户端，步骤和命令如下：
+git clone https://github.com/letsencrypt/letsencrypt cd letsencrypt  2、生成证书 命令：
+./letsencrypt-auto  该命令的执行需要很多的依赖库，但是我们并不需要关心，因为它会找到系统的yum命令的目录，然后自动帮我们安装。
+有些库yum源里面可能找不到而无法安装，我在执行的时候就出错了，提示信息如下：
+Loading mirror speeds from cached hostfile * base: centos.mirrors.hoobly.com * extras: mirror.pac-12.org * updates: mirrors.easynews.com No package python-virtualenv available. No package python-pip available.  对于这个问题，可以通过安装epel解决，安装好epel之后再重新执行 ./letsencrypt-auto 即可解决。安装epel的命令是：yum install epel-release
+所有依赖库自动安装完成后，在执行的时候还是报错了，提示说是因为Python需要2.7以上版本，但我的系统是2.6.6。但是yum又需要Python是2.6.6的版本，所以我没有选择升级Python，而是换一个命令生成证书（当然是可以通过升级Python来实现证书的生成）。报错信息如下：
+Requesting root privileges to run letsencrypt… /root/.local/share/letsencrypt/bin/letsencrypt /root/.local/share/letsencrypt/lib/python2.6/site-packages/cryptography/__init__.py:26: DeprecationWarning: Python 2.6 is no longer supported by the Python core team, please upgrade your Python.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sentry on xiaosongfu</title>
+    <link>https://xiaosongfu.com/tags/sentry/</link>
+    <description>Recent content in Sentry on xiaosongfu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Jan 2017 19:26:01 +0000</lastBuildDate>
+    
+	<atom:link href="https://xiaosongfu.com/tags/sentry/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>为 SpringBoot 应用加持 Sentry</title>
+      <link>https://xiaosongfu.com/archives/2017-01-07-integrate-sentry-for-springboot-app/</link>
+      <pubDate>Sat, 07 Jan 2017 19:26:01 +0000</pubDate>
+      
+      <guid>https://xiaosongfu.com/archives/2017-01-07-integrate-sentry-for-springboot-app/</guid>
+      <description>目录  1、配置方法
+2、参考文档
+ 1、配置方法  sentry 官网，我们可以直接使用官方的服务，也可以自己搭建服务器，对于如何搭建服务器，官方有详细的文档。
+ 1. 在 pom.xml 文件中添加依赖 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.getsentry.raven&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;raven-logback&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;7.8.1&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;  2. 配置 logback-spring.xml 文件 SpringBoot 默认使用 logback 库打印日志，为了实现将日志信息发送到 sentry 服务器，我们需要配置 sentry 的 appender，所以我们需要定义 logback 的配置文件。在 src/main/resource 下新建 logback-spring.xml 文件，并按如下内容进行配置：
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;include resource=&amp;quot;org/springframework/boot/logging/logback/base.xml&amp;quot;/&amp;gt; &amp;lt;appender name=&amp;quot;SENTRY&amp;quot; class=&amp;quot;com.getsentry.raven.logback.SentryAppender&amp;quot;&amp;gt; &amp;lt;dsn&amp;gt;https://c82bb5298ea241a5afd458b083e6acc1:40afd81d85e04135b75a22460be5bfd7@sentry.io/127340&amp;lt;/dsn&amp;gt; &amp;lt;tags&amp;gt;tag1:value1,tag2:value2&amp;lt;/tags&amp;gt; &amp;lt;filter class=&amp;quot;ch.qos.logback.classic.filter.ThresholdFilter&amp;quot;&amp;gt; &amp;lt;level&amp;gt;ERROR&amp;lt;/level&amp;gt; &amp;lt;/filter&amp;gt; &amp;lt;/appender&amp;gt; &amp;lt;root level=&amp;quot;INFO&amp;quot;&amp;gt; &amp;lt;appender-ref ref=&amp;quot;CONSOLE&amp;quot;/&amp;gt; &amp;lt;appender-ref ref=&amp;quot;FILE&amp;quot;/&amp;gt; &amp;lt;appender-ref ref=&amp;quot;SENTRY&amp;quot;/&amp;gt; &amp;lt;/root&amp;gt; &amp;lt;/configuration&amp;gt;  解释：新增了一个名字为 SENTRY 的 appender，实现将 level 为 ERROR 的日志才发送到 sentry 服务器。</description>
+    </item>
+    
+  </channel>
+</rss>

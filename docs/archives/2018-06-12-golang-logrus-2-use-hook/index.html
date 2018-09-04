@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico?cb=150118" type="image/x-icon">
+<link rel="alternate" href="/index.xml" type="application/rss+xml" title="xiaosongfu">
+<title>logrus 日志打印库 (2) 使用HOOK - xiaosongfu</title>
+</head>
+<body>
+
+<div class="container">
+
+  <header role="banner">
+    <div class="row">
+      <a href="/" class="site-title">xiaosongfu</a>
+      <a href="/about/" class="site-about">About</a>
+    </div>
+  </header>
+
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <div class="entry-header">
+        <div class="bubble bubble-golanglog"></div>
+        <h1 class="entry-title" itemprop="headline">logrus 日志打印库 (2) 使用HOOK</h1>
+        <span class="entry-meta"><time itemprop="datePublished" datetime="2018-06-12">2018-06-12 14:41:20</time> <a href="/categories/golang">#golang</a><a href="/categories/log">#log</a></span>
+      </div>
+      <section itemprop="text">
+        
+
+<h2 id="目录">目录</h2>
+
+<blockquote>
+<p>1、使用 HOOK 输出到日志文件<br />
+2、使用 HOOK 输出到日志文件并实现切割功能<br />
+3、使用 HOOK 输出到 ElasticSearch<br />
+4、使用 HOOK 实现通知 beachat 机器人</p>
+</blockquote>
+
+<h3 id="1-使用-hook-输出到日志文件">1、使用 HOOK 输出到日志文件</h3>
+
+<p>输出到日志文件需要借助 lfshook hook库。使用方法很简单，可以配置日志格式，可以为不同级别的日志指定不同的日志文件。godoc 截图如下：
+<img src="https://lollipop.xiaosongfu.com/blog/201806/lfshook.png" alt="你看不到我^_^" /></p>
+
+<p>指定日志文件可以通过传递文件路径或者 writer。示例：
+&gt; 方式一：指定日志文件路径</p>
+
+<pre><code>const logFile1 = &quot;log/logrus/filelog1.log&quot;
+
+logger1 := logrus.New()
+
+lfsHook := lfshook.NewHook(lfshook.PathMap{
+    logrus.DebugLevel: logFile1,
+    logrus.InfoLevel:  logFile1,
+    logrus.WarnLevel:  logFile1,
+    logrus.ErrorLevel: logFile1,
+    logrus.FatalLevel: logFile1,
+    logrus.PanicLevel: logFile1,
+}, &amp;logrus.TextFormatter{})
+logger1.AddHook(lfsHook)
+
+logger1.Debug(&quot;file log text-debug&quot;)
+logger1.Info(&quot;file log text-info&quot;)
+</code></pre>
+
+<blockquote>
+<p>方式二：指定 file writer</p>
+
+<pre><code>const logFile2 = &quot;log/logrus/filelog2.log&quot;
+logger2 := logrus.New()
+
+var fileWriter io.Writer
+fileWriter, err := os.OpenFile(logFile2, os.O_CREATE|os.O_WRONLY, 0666)
+if err != nil {
+    fileWriter = os.Stderr
+}
+lfsHook := lfshook.NewHook(lfshook.WriterMap{
+    logrus.DebugLevel: fileWriter,
+    logrus.InfoLevel:  fileWriter,
+    logrus.WarnLevel:  fileWriter,
+    logrus.ErrorLevel: fileWriter,
+    logrus.FatalLevel: fileWriter,
+    logrus.PanicLevel: fileWriter,
+}, &amp;logrus.TextFormatter{})
+logger2.AddHook(lfsHook)
+
+logger2.Debug(&quot;file log text-debug&quot;)
+logger2.Info(&quot;file log text-info&quot;)
+</code></pre>
+</blockquote>
+
+<p>PathMap 和 WriterMap 的定义如下：</p>
+
+<pre><code>// PathMap is map for mapping a log level to a file's path.
+// Multiple levels may share a file, but multiple files may not be used for one level.
+type PathMap map[logrus.Level]string
+
+// WriterMap is map for mapping a log level to an io.Writer.
+// Multiple levels may share a writer, but multiple writers may not be used for one level.
+type WriterMap map[logrus.Level]io.Writer
+</code></pre>
+
+<p>就是这么简单。</p>
+
+<h3 id="2-使用-hook-输出到日志文件并实现切割功能">2、使用 HOOK 输出到日志文件并实现切割功能</h3>
+
+<p>实现输出到日志文件并切割只需要在 lfshook hook库基础上将 WriterMap 中传入的 writer 不明确在某一个文件上即可，可以借助 github.com/lestrrat-go/file-rotatelogs 库来实现。直接上代码:</p>
+
+<pre><code>package main
+
+import (
+	&quot;time&quot;
+
+	&quot;github.com/lestrrat-go/file-rotatelogs&quot;
+	&quot;github.com/rifflock/lfshook&quot;
+	&quot;github.com/sirupsen/logrus&quot;
+)
+
+func main() {
+	var logFilePath = &quot;log/logrux&quot;
+	var logFileName = &quot;access&quot;
+
+	logger := logrus.New()
+
+	rotateLogs, err := rotatelogs.New(logFilePath+logFileName+&quot;.%Y%m%d%H%M&quot;,
+		rotatelogs.WithLinkName(logFileName),
+		rotatelogs.WithMaxAge(24*time.Hour),
+		rotatelogs.WithRotationTime(time.Hour),
+	)
+	if err != nil {
+		panic(err)
+	}
+
+	lfsHook := lfshook.NewHook(lfshook.WriterMap{
+		logrus.DebugLevel: rotateLogs,
+		logrus.InfoLevel:  rotateLogs,
+		logrus.WarnLevel:  rotateLogs,
+		logrus.ErrorLevel: rotateLogs,
+		logrus.FatalLevel: rotateLogs,
+		logrus.PanicLevel: rotateLogs,
+	}, &amp;logrus.TextFormatter{})
+	
+	logger.AddHook(lfsHook)
+
+	logger.Debug(&quot;file log text-debug&quot;)
+	logger.Info(&quot;file log text-info&quot;)
+}
+</code></pre>
+
+      </section>
+      <div class="share">
+        <a href="https://twitter.com/share?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-06-12-golang-logrus-2-use-hook%2f&text=logrus%20%e6%97%a5%e5%bf%97%e6%89%93%e5%8d%b0%e5%ba%93%20%282%29%20%e4%bd%bf%e7%94%a8HOOK" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="twitter">
+          <img src="/assets/fonts/twitter.svg" width="18" height="18">
+        </a>
+        <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-06-12-golang-logrus-2-use-hook%2f" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,height=300,width=600');return false;" class="facebook">
+          <img src="/assets/fonts/facebook.svg" width="18" height="18">
+        </a>
+        <a href="https://getpocket.com/edit?url=https%3a%2f%2fxiaosongfu.com%2farchives%2f2018-06-12-golang-logrus-2-use-hook%2f&title=logrus%20%e6%97%a5%e5%bf%97%e6%89%93%e5%8d%b0%e5%ba%93%20%282%29%20%e4%bd%bf%e7%94%a8HOOK" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,scrollbars=yes,height=300,width=600');return false;" class="pocket">
+          <img src="/assets/fonts/pocket.svg" width="18" height="18">
+        </a>
+      </div>
+    </article>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+         
+        var disqus_shortname = 'xiaosongfu'; 
+
+         
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </main>
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+</script>
+
+</body>
+</html>
+
