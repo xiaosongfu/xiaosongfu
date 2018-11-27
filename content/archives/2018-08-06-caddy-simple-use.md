@@ -33,6 +33,7 @@ categories: ["caddy"]
 
 
 ### 启动服务
+
 ```
 [root@JD ~]# caddy -conf /etc/caddy/Caddyfile
 ```

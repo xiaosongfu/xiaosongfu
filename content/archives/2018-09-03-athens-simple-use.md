@@ -130,3 +130,7 @@ athens-storage/
 go module 机制会将下载的 modules 缓存在 $GOPATH/pkg/mod 目录下，在本机查看一下该目录
 
 ![](https://lollipop.xiaosongfu.com/blog/201809/athens.png)
+
+---
+
+* 参考文章：[为 Go module 搭建私服](http://blog.cyeam.com/golang/2018/09/27/athens)
