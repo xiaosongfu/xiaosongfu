@@ -12,7 +12,35 @@ android.useAndroidX=true
 android.enableJetifier=true
 ```
 
+然后在 Android Studio 中点击 Refactor 菜单，选择 Migrate to AndroidX 即可。
 
+![](https://lollipop.xiaosongfu.com/blog/201811/migrate-to-androidx.png) 
+
+这会影响到：
+1. build.gradle 文件中的依赖路径，如：`androidx.test:runner:1.1.0`
+2. 代码文件中类的依赖路径，如：`androidx.recyclerview.widget.RecyclerView`
+
+迁移之后的对比：
+
+> support-library
+ 
+![](https://lollipop.xiaosongfu.com/blog/201811/support-library-1.png) 
+
+![](https://lollipop.xiaosongfu.com/blog/201811/support-library-2.png) 
+
+> androidx
+
+![](https://lollipop.xiaosongfu.com/blog/201811/androidx-1.png) 
+
+![](https://lollipop.xiaosongfu.com/blog/201811/androidx-2.png) 
+
+### 对比示例
+
+android.support.v7.app.AppCompatActivity ==> androidx.appcompat.app.AppCompatActivity
+android.support.v7.widget.CardView ==> androidx.cardview.widget.CardView
+android.support.v7.widget.RecyclerView ==> androidx.recyclerview.widget.RecyclerView
+
+> 迁移前
 
 ```
 package com.xiaosongfu.talkme
@@ -33,6 +61,7 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
+> 迁移后
 
 ```
 package com.xiaosongfu.talkme
