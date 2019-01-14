@@ -1,42 +1,47 @@
 * archives - 归档
+    * 2019
+        * 
+    
     * 2018
-        * 2018-02-24-install-package-on-golang-org-x
-        * 2018-04-28-install-requestbin-service
-        * 2018-04-28-login-linux-fast
-        * 2018-06-12-golang-logrus-1-simple-use
-        * 2018-06-12-golang-logrus-2-use-hook
-        * 2018-06-26-install-dartlang
-        * 2018-06-26-install-golang
-        * 2018-07-06-install-fllutter-sdk
-        * 2018-07-13-install-minikube
-        * 2018-07-31-rclone-simple-use
-        * 2018-08-06-caddy-simple-use
-        * 2018-08-06-supervisor-simple-use
-        * 2018-08-07-unison-simple-use
-        * 2018-08-16-install-kubectl
-        * 2018-08-17-install-kubeadm
+        * 2018-02-24-安装 golang.org/x/ 下的 package
+        * 2018-04-28-自己搭建 requestbin 服务
+        * 2018-04-28-快速登录 linux 服务器
+        * 2018-06-12-logrus 日志打印库 (1) 简单使用
+        * 2018-06-12-logrus 日志打印库 (2) 使用 HOOK
+        * 2018-06-26-安装 Dartlang
+        * 2018-06-26-安装 Golang
+        * 2018-07-06-安装 Flutter SDK
+        * 2018-07-13-主流操作系统安装 minikube
+        * 2018-07-31-Rclone 简单使用
+        * 2018-08-06-Caddy 简单使用
+        * 2018-08-06-supervisor 简单使用
+        * 2018-08-07-Unison 简单使用
+        * 2018-08-16-主流操作系统安装 kubectl
+        * 2018-08-17-安装 kubeadm
         * 2018-08-27-drone
         * 2018-08-27-go-module
-        * 2018-09-03-athens-simple-use
-        * 2018-09-26-go-builtin-types-and-type-conversion
+        * 2018-09-03-Athens 简单使用
+        * 2018-09-26-Go 内建类型及类型转换
     
     * 2017
-        * 2017-01-07-integrate-sentry-for-springboot-app
-        * 2017-01-10-Macaca-uirecorder-implements-Android-auto-test
-        * 2017-02-21-android-project-docs
+        * 2017-01-07-为 SpringBoot 应用加持 Sentry
+        * 2017-01-10-Macaca + uirecorder 实现 Android 自动化测试
+        * 2017-02-21-Android 项目必备文档
         * 2017-02-21-Jenkins-Gradle-for-CI
-        * 2017-07-31-install-android-SDK-with-terminal
-        * 2017-12-07-docker-push-simple-use
-        * 2017-12-07-SonarQube-1-install-using-docker
+        * 2017-07-31-使用命令行安装 Android SDK
+        * 2017-12-07-docker push 简记
+        * 2017-12-07-质量检测平台 SonarQube：1 使用 Docker 搭建服务器
     
     * 2016
-        * 2016-11-26-android-code-snippet
-        * 2016-11-26-install-nginx-and-php
-        * 2016-11-26-Letsencrypt-simeple-use-1-generate-pem-and-key-files
-        * 2016-11-26-Letsencrypt-simeple-use-2-update-pem-and-key-files
-        * 2016-12-05-individualization-your-androidstudio
-        * 2016-12-15-IntelliJ-IDEA-package-springboot-project-to-jar
-        * 2016-12-17-zxing-simple-use
+        * 2016-11-26-Java/Android代码片段
+        * 2016-11-26-Nginx-PHP 的安装
+        * 2016-11-26-Letsencrypt的简单使用 1-证书的生成和配置
+        * 2016-11-26-Letsencrypt的简单使用 2-证书的更新
+        * 2016-12-05-配置属于你自己的 AndroidStudio
+        * 2016-12-15-IntelliJ IDEA 打包 Spring Boot 项目为 jar 包
+        * 2016-12-17-使用 Zxing 库简单实现二维码生成与扫描
+
+---
 
 * draft - 草稿
     * 2017-07-08-Android-iOS-设计规范基础

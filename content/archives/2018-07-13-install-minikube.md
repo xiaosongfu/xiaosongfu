@@ -1,5 +1,5 @@
 ---
-title: "主流操作系统安装 Minikube"
+title: "主流操作系统安装 minikube"
 date: 2018-07-13T11:42:21+08:00
 tags: ["kubernets","minikube"]
 categories: ["kubernets"]
@@ -10,15 +10,14 @@ categories: ["kubernets"]
 1、macOS 系统安装 Minikube  
 2、Linux 系统安装 Minikube  
 
-
 Minikube Github：[https://github.com/kubernetes/minikube](https://github.com/kubernetes/minikube)  
 Minikube Github Release：[https://github.com/kubernetes/minikube/releases](https://github.com/kubernetes/minikube/releases)  
 
-* 本文整理自 [https://github.com/kubernetes/minikube/releases](https://github.com/kubernetes/minikube/releases) *
+* 本文整理自 [https://github.com/kubernetes/minikube/releases](https://github.com/kubernetes/minikube/releases)
 
 ---
 
-### macOS 系统安装 Minikube
+### macOS 系统安装 minikube
 
 有两种安装方式:
 
@@ -103,7 +102,7 @@ curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.28.2/minik
 
 ---
 
-官网 Minikube 文档阅读指南：
+官网 minikube 文档阅读指南：
 
 1. 安装：Install Minikube --- https://kubernetes.cn/docs/tasks/tools/install-minikube/
 2. 使用：Running Kubernetes Locally via Minikube --- https://kubernetes.cn/docs/setup/minikube/

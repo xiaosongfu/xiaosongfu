@@ -1,5 +1,5 @@
 ---
-Title: "Caddy 简单实用"
+Title: "Caddy 简单使用"
 Date: 2018-08-06T15:55:18+08:00
 tags: ["caddy"]
 categories: ["caddy"]

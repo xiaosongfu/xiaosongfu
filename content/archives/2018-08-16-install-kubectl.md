@@ -1,5 +1,5 @@
 ---
-title: "主流操作系统安装 Kubectl"
+title: "主流操作系统安装 kubectl"
 date: 2018-08-16T11:07:23+08:00
 tags: ["kubernets","kubectl"]
 categories: ["kubernets"]
@@ -12,9 +12,9 @@ categories: ["kubernets"]
 3、使用 Google Cloud SDK 安装 (Download as part of the Google Cloud SDK)
 4、配置 shell 终端自动补齐命令 (Enabling shell autocompletion) 
 
+* 本文整理自 Kubernetes 官网文档：[Install and Set Up kubectl](https://kubernetes.cn/docs/tasks/tools/install-kubectl/)
 
-参考 Kubernetes 官网文档：[Install and Set Up kubectl](https://kubernetes.cn/docs/tasks/tools/install-kubectl/)
-
+---
 
 ### 1、使用包管理器安装 (Install kubectl binary via native package management)
 
@@ -108,4 +108,34 @@ gcloud components install kubectl
 
 ### 4、配置 shell 终端自动补齐命令 (Enabling shell autocompletion) 
 
-> 待填坑
+kubectl包括自动完成支持，可以节省大量的输入！
+
+完成脚本本身由kubectl生成，因此您通常只需要从配置文件中调用它。
+
+这里提供了常见的例子。有关更多详细信息，请参阅 `kubectl completion -h`
+
+##### On Linux, using bash
+
+在CentOS Linux上，您可能需要安装默认情况下未安装的 bash-completion 软件包: `yum install bash-completion -y`
+
+添加 kubectl 自动补全到当前 shell 窗口，请运行：`source <(kubectl completion bash)`
+
+添加 kubectl 自动补全到 profile，使得以后打开 shell 窗口自动加载：`echo "source <(kubectl completion bash)" >> ~/.bashrc
+`
+
+##### On macOS, using bash
+
+在 macOS上，您需要先通过 Homebrew 安装 bash-completion 支持：
+
+```
+## If running Bash 3.2 included with macOS
+brew install bash-completion
+## or, if running Bash 4.1+
+brew install bash-completion@2
+```
+
+....
+
+##### Using Zsh
+
+...

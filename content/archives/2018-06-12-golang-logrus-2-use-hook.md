@@ -1,5 +1,5 @@
 ---
-title: "logrus 日志打印库 (2) 使用HOOK"
+title: "logrus 日志打印库 (2) 使用 HOOK"
 date: 2018-06-12T14:41:20+08:00
 tags: ["golang","log","logrus"]
 categories: ["golang","log"]

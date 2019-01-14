@@ -1,5 +1,5 @@
 ---
-title: "Athens Simple Use"
+title: "Athens 简单使用"
 date: 2018-09-03T11:44:34+08:00
 tags: ["go module"]
 categories: ["go"]
