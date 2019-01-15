@@ -1,5 +1,5 @@
 ---
-title: "Centos 7 安装 kubeadm"
+title: "Centos 7 使用 kubeadm 安装 Kubernetes 集群"
 date: 2018-08-17T11:52:24+08:00
 tags: []
 categories: []
@@ -16,7 +16,7 @@ categories: []
 7、重置安装
 8、附录和遇到的问题
 
-* 本文整理自 
+* 本文整理自 [Installing kubeadm](https://kubernetes.cn/docs/setup/independent/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl)
 
 > 本文以 Centos 7 为例。
 
@@ -54,7 +54,11 @@ docker-ce.x86_64            17.03.1.ce-1.el7.centos             docker-ce-stable
 docker-ce.x86_64            17.03.0.ce-1.el7.centos             docker-ce-stable
 
 [root@VM_0_3_centos ~]# yum -y install docker-ce-17.03.0.ce
+```
 
+启动 docker，并设置开机自启动：
+
+```
 [root@VM_0_3_centos ~]# systemctl enable docker && systemctl start docker
 ```
 
@@ -79,8 +83,11 @@ exclude=kube*
 EOF
 ```
 
+Set SELinux in permissive mode (effectively disabling it)
+
 ```
 [root@VM_0_3_centos ~]# setenforce 0
+[root@VM_0_3_centos ~]# sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 ```
 
 ```
@@ -177,6 +184,8 @@ Running transaction
 完毕！
 [root@JVM_0_3_centos ~]#
 ```
+
+启动 kubelet，并设置开机自启动：
 
 ```
 [root@VM_0_3_centos ~]# systemctl enable kubelet && systemctl start kubelet

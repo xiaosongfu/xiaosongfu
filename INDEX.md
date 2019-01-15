@@ -17,7 +17,7 @@
         * 2018-08-06-supervisor 简单使用
         * 2018-08-07-Unison 简单使用
         * 2018-08-16-主流操作系统安装 kubectl
-        * 2018-08-17-安装 kubeadm
+        * 2018-08-17-Centos 7 使用 kubeadm 安装 Kubernetes 集群
         * 2018-08-27-drone
         * 2018-08-27-go-module
         * 2018-09-03-Athens 简单使用
