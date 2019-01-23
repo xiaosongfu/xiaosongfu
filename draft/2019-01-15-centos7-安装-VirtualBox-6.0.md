@@ -2,7 +2,7 @@ VirtualBox 官方下载地址：https://www.virtualbox.org/wiki/Linux_Downloads
 
 --
 
-![]()
+![](https://lollipop.xiaosongfu.com/blog/201901/virualbox.png)
 
 右键单击 ` Oracle Linux 7 / Red Hat Enterprise Linux 7 / CentOS 7` 并选择 `赋值连接地址`，然后开始下载：
 

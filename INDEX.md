@@ -64,3 +64,8 @@
     * 2018-12-27-Flutter-json-序列化与反序列化
     * 2018-12-29-dart-异步编程
     * 2018-12-29-ubuntu-xfce-vnc-远程桌面
+    * 2019-01-16-本地创建、开发、测试、部署 AWS Lambda - 通过 aws-sam-cli
+    * 2019-01-16-本地创建、开发、测试、部署 Azure Functions - 通过 azure-functions-core-tools
+    * 2019-01-21-安装 harbor
+    * 2019-01-22-使用 Harbor
+    * 2019-01-22-vagrant 简单使用
