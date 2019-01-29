@@ -69,3 +69,5 @@
     * 2019-01-21-安装 harbor
     * 2019-01-22-使用 Harbor
     * 2019-01-22-vagrant 简单使用
+    * 2019-01-25-测试 Kubernetes 集群的 DNS 服务
+    * 2019-01-29-体验firecracker
