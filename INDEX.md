@@ -18,7 +18,6 @@
         * 2018-08-07-Unison 简单使用
         * 2018-08-16-主流操作系统安装 kubectl
         * 2018-08-17-Centos 7 使用 kubeadm 安装 Kubernetes 集群
-        * 2018-08-27-drone
         * 2018-08-27-go-module
         * 2018-09-03-Athens 简单使用
         * 2018-09-26-Go 内建类型及类型转换
@@ -70,12 +69,19 @@
     * 2019-01-22-使用 Harbor
     * 2019-01-22-vagrant 简单使用
     * 2019-01-25-测试 Kubernetes 集群的 DNS 服务
-    * 2019-01-25-安装-ELK-Elasticsearch
-    * 2019-01-25-安装-ELK-Kibana
-    * 2019-01-25-安装-ELK-Logstash
-    * 2019-01-28-电力交易中心-ELK-线上日志实战
+    * 2019-01-25-安装 ELK-Elasticsearch
+    * 2019-01-25-安装 ELK-Kibana
+    * 2019-01-25-安装 ELK-Logstash
+    * 2019-01-28-电力交易中心 ELK 线上日志实战
     * 2019-01-28-grpc
     * 2019-01-28-protocol buffer
     * 2019-01-29-体验firecracker
-    * 2019-01-29-linux-screen-命令简单使用
-    * 2019-01-30-minio-简单使用
+    * 2019-01-29-linux screen 命令简单使用
+    * 2019-01-30-minio 简单使用
+    * 2019-01-30-搭建分布式 minio
+    * 2019-01-30-minio mc 命令使用指南
+    * 2019-01-30-minio 存储桶访问策略
+    * 2019-01-31-安装单机器 drone
+    * 2019-01-31-安装多机器 drone
+    * 2019-01-31-使用-docker-部署-nexus-服务.md
+    * 2019-01-31-自动拼接 url 下载 github 特定项目的 release.md
