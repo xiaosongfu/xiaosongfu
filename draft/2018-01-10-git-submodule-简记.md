@@ -28,6 +28,7 @@ Changes to be committed:
         new file:   submodules/ibotlib
 
 ```  
+
 其中 “.gitmodules” 指定submodule的主要信息，包括子模块的路径和地址信息。  
 其中 “new file:   submodules/ibotlib“ 并不是将 ibotlib 库的内容添加到当前的仓库里面，而是以 gitlink 方式添加了一个链接。  
 .gitmodules 和 submodules/ibotlib 这两项是需要提交到父项目的远程仓库的。
