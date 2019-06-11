@@ -14,11 +14,14 @@ categories: ["golang","log"]
 
 
 ### 1、使用 HOOK 输出到日志文件
-输出到日志文件需要借助 lfshook hook库。使用方法很简单，可以配置日志格式，可以为不同级别的日志指定不同的日志文件。godoc 截图如下：
+
+输出到日志文件需要借助 lfshook 库。使用方法很简单，可以配置日志格式，可以为不同级别的日志指定不同的日志文件。godoc 截图如下：
 ![你看不到我^_^](https://lollipop.xiaosongfu.com/blog/201806/lfshook.png)
 
 指定日志文件可以通过传递文件路径或者 writer。示例：
+
 > 方式一：指定日志文件路径
+
 ```
 const logFile1 = "log/logrus/filelog1.log"
 
@@ -37,7 +40,9 @@ logger1.AddHook(lfsHook)
 logger1.Debug("file log text-debug")
 logger1.Info("file log text-info")
 ```
+
 > 方式二：指定 file writer
+
 ```
 const logFile2 = "log/logrus/filelog2.log"
 logger2 := logrus.New()
@@ -62,6 +67,7 @@ logger2.Info("file log text-info")
 ```
 
 PathMap 和 WriterMap 的定义如下：
+
 ```
 // PathMap is map for mapping a log level to a file's path.
 // Multiple levels may share a file, but multiple files may not be used for one level.
@@ -71,10 +77,12 @@ type PathMap map[logrus.Level]string
 // Multiple levels may share a writer, but multiple writers may not be used for one level.
 type WriterMap map[logrus.Level]io.Writer
 ```
+
 就是这么简单。
 
 ### 2、使用 HOOK 输出到日志文件并实现切割功能
-实现输出到日志文件并切割只需要在 lfshook hook库基础上将 WriterMap 中传入的 writer 不明确在某一个文件上即可，可以借助 github.com/lestrrat-go/file-rotatelogs 库来实现。直接上代码:
+
+实现输出到日志文件并切割只需要在 lfshook 库基础上将 WriterMap 中传入的 writer 不明确在某一个文件上即可，可以借助 github.com/lestrrat-go/file-rotatelogs 库来实现。直接上代码:
 
 ```
 package main

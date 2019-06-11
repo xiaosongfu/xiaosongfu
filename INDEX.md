@@ -62,7 +62,7 @@
     * 2018-12-07-Android-Launcher-开发
     * 2018-12-27-Flutter-json-序列化与反序列化
     * 2018-12-29-dart-异步编程
-    * 2018-12-29-ubuntu-xfce-vnc-远程桌面
+    * 2018-12-29-ubuntu-xfce-vnc 远程桌面
     * 2019-01-16-本地创建、开发、测试、部署 AWS Lambda - 通过 aws-sam-cli
     * 2019-01-16-本地创建、开发、测试、部署 Azure Functions - 通过 azure-functions-core-tools
     * 2019-01-21-安装 harbor
@@ -75,7 +75,7 @@
     * 2019-01-28-电力交易中心 ELK 线上日志实战
     * 2019-01-28-grpc
     * 2019-01-28-protocol buffer
-    * 2019-01-29-体验firecracker
+    * 2019-01-29-体验 firecracker
     * 2019-01-29-linux screen 命令简单使用
     * 2019-01-30-minio 简单使用
     * 2019-01-30-搭建分布式 minio
@@ -83,5 +83,5 @@
     * 2019-01-30-minio 存储桶访问策略
     * 2019-01-31-安装单机器 drone
     * 2019-01-31-安装多机器 drone
-    * 2019-01-31-使用-docker-部署-nexus-服务.md
-    * 2019-01-31-自动拼接 url 下载 github 特定项目的 release.md
+    * 2019-01-31-使用 docker 部署 nexus 服务
+    * 2019-01-31-自动拼接 url 下载 github 特定项目的 release

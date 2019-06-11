@@ -41,9 +41,10 @@ elasticsearch.url: "http://localhost:9200"
 $ bin/kibana
 ```
 
-打开浏览器访问 `http://localhost:5601`。
+打开浏览器访问 `http://localhost:5601`
 
 http://localhost:5601/staus
+
 
 ---
 

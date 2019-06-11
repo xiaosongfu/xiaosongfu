@@ -40,7 +40,7 @@ curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.28.0/minik
 3. `mv minikube /usr/local/bin/` => 将 minikube 移动到 `/usr/local/bin/` 目录下，这一步是可选的，你也可以直接手动将 minikube 的路径添加到系统的环境变量
 
 ```
-fuxiaosongdeMac-mini:~ fuxiaosong$ minikube
+$ minikube
 Minikube is a CLI tool that provisions and manages single-node Kubernetes clusters optimized for development workflows.
 
 Usage:

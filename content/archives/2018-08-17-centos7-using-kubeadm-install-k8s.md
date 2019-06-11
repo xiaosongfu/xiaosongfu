@@ -27,15 +27,15 @@ Centos 系统上安装：[Get Docker CE for CentOS](https://docs.docker.com/inst
 使用如下命令安装 `17.03` 版本的 Docker：
 
 ```
-[root@VM_0_3_centos ~]# yum install -y yum-utils \
+# yum install -y yum-utils \
   device-mapper-persistent-data \
   lvm2
 
-[root@VM_0_3_centos ~]# yum-config-manager \
+# yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
 
-[root@VM_0_3_centos ~]# yum list docker-ce --showduplicates | sort -r
+# yum list docker-ce --showduplicates | sort -r
 已加载插件：fastestmirror, langpacks
 可安装的软件包
 Loading mirror speeds from cached hostfile
@@ -53,13 +53,13 @@ docker-ce.x86_64            17.03.2.ce-1.el7.centos             docker-ce-stable
 docker-ce.x86_64            17.03.1.ce-1.el7.centos             docker-ce-stable
 docker-ce.x86_64            17.03.0.ce-1.el7.centos             docker-ce-stable
 
-[root@VM_0_3_centos ~]# yum -y install docker-ce-17.03.0.ce
+# yum -y install docker-ce-17.03.0.ce
 ```
 
 启动 docker，并设置开机自启动：
 
 ```
-[root@VM_0_3_centos ~]# systemctl enable docker && systemctl start docker
+# systemctl enable docker && systemctl start docker
 ```
 
 ### 2、安装 kubeadm, kubelet 和 kubectl
@@ -71,7 +71,7 @@ docker-ce.x86_64            17.03.0.ce-1.el7.centos             docker-ce-stable
 * kubectl 是 Kubernetes 命令行工具。通过 kubectl 可以部署和管理应用，查看各种资源，创建、删除和更新各种组件。
 
 ```
-[root@VM_0_3_centos ~]# cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+# cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
 baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
@@ -86,12 +86,12 @@ EOF
 Set SELinux in permissive mode (effectively disabling it)
 
 ```
-[root@VM_0_3_centos ~]# setenforce 0
-[root@VM_0_3_centos ~]# sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+$ setenforce 0
+$ sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 ```
 
 ```
-[root@VM_0_3_centos ~]# yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+# yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 已加载插件：fastestmirror, langpacks
 Repository base is listed more than once in the configuration
 Repository updates is listed more than once in the configuration
@@ -188,7 +188,7 @@ Running transaction
 启动 kubelet，并设置开机自启动：
 
 ```
-[root@VM_0_3_centos ~]# systemctl enable kubelet && systemctl start kubelet
+# systemctl enable kubelet && systemctl start kubelet
 ```
 
 注意：
@@ -211,7 +211,7 @@ sysctl --system
 可以使用 `kubeadm config images list` 命令查看本次安装会用到的 k8s.gcr.io 仓库里的镜像的版本号，如：
 
 ```
-[root@VM_0_3_centos ~]# kubeadm config images list
+# kubeadm config images list
 k8s.gcr.io/kube-apiserver-amd64:v1.11.2
 k8s.gcr.io/kube-controller-manager-amd64:v1.11.2
 k8s.gcr.io/kube-scheduler-amd64:v1.11.2
@@ -219,7 +219,7 @@ k8s.gcr.io/kube-proxy-amd64:v1.11.2
 k8s.gcr.io/pause:3.1
 k8s.gcr.io/etcd-amd64:3.2.18
 k8s.gcr.io/coredns:1.1.3
-[root@VM_0_3_centos ~]#
+#
 ```
 
 在执行 `kubeadm init` 命令之前可以执行 `kubeadm config images pull` 命令把所有等下需要的 k8s.gcr.io 仓库里的镜像拉取下来。
@@ -229,7 +229,7 @@ k8s.gcr.io/coredns:1.1.3
 `kubeadm config images pull` 命令的运行结果：
 
 ```
-[root@VM_0_3_centos ~]# kubeadm config images pull
+# kubeadm config images pull
 [config/images] Pulled k8s.gcr.io/kube-apiserver-amd64:v1.11.2
 [config/images] Pulled k8s.gcr.io/kube-controller-manager-amd64:v1.11.2
 [config/images] Pulled k8s.gcr.io/kube-scheduler-amd64:v1.11.2
@@ -237,7 +237,7 @@ k8s.gcr.io/coredns:1.1.3
 [config/images] Pulled k8s.gcr.io/pause:3.1
 [config/images] Pulled k8s.gcr.io/etcd-amd64:3.2.18
 [config/images] Pulled k8s.gcr.io/coredns:1.1.3
-[root@VM_0_3_centos ~]#
+#
 ```
 
 > 需要为 Docker 设置好代理后，才可以下载 k8s.gcr.io 仓库下的镜像。
@@ -245,7 +245,7 @@ k8s.gcr.io/coredns:1.1.3
 执行 init 命令初始化：
 
 ```
-[root@VM_0_3_centos ~]# kubeadm init --apiserver-advertise-address 132.232.5.36 --pod-network-cidr=10.244.0.0/16
+# kubeadm init --apiserver-advertise-address 132.232.5.36 --pod-network-cidr=10.244.0.0/16
 [init] using Kubernetes version: v1.11.2
 [preflight] running pre-flight checks
 	[WARNING HTTPProxy]: Connection to "https://132.232.5.36" uses proxy "http://127.0.0.1:8118". If that is not intended, adjust your proxy settings
@@ -317,7 +317,7 @@ as root:
 
   kubeadm join 132.232.5.36:6443 --token nk1bb2.oj4jub5x75k4dbj7 --discovery-token-ca-cert-hash sha256:fe572b7b882d1692b7f42befe19a54726935c0707306275271ce3797431b9ce2
 
-[root@VM_0_3_centos ~]#
+#
 ```
 
 ### 4、配置 kubectl

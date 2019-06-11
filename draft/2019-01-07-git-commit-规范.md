@@ -2,7 +2,7 @@ https://www.jianshu.com/p/1850c040271f
 
 
 ```
-<提交类型>(影响范围):<主题> 
+<提交类型>(影响范围): <主题> 
 # 解释为什么要做这些改动
 issue #?
 ```
@@ -12,9 +12,9 @@ issue #?
 ---
 
 ```
- <type>(<scope>) : <subject>
-   <body>
-  <footer>
+<type>(<scope>): <subject>
+<body>
+<footer>
 ```
 
 type: 值可以有很多

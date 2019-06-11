@@ -18,14 +18,13 @@ $ tar -xzf logstash-6.5.4.tar.gz
 bin/logstash -e 'input{stdin{}}output{stdout{codec=>rubydebug}}'
 ```
 
-
 然后准备 `logstash.conf` 配置文件
 
 配置文件参考：https://www.elastic.co/guide/en/logstash/current/configuration.html
 
 可以配置的有 input plugin、output plugin 和 filter。
 
-这里以 http、stdin input plugin 和 elasticsearch、stdout output plugin 为例：
+这里以 http input plugin、stdin input plugin 和 elasticsearch output plugin、stdout output plugin 为例：
 
 ```
 input {
@@ -36,6 +35,7 @@ input {
             # id => "my_plugin_id" # 可选配置
         }
 }
+
 output {
   elasticsearch { hosts => ["localhost:9200"] }
   stdout { codec => rubydebug }

@@ -1,4 +1,4 @@
-ELK是三个开源软件的缩写，分别为：Elasticsearch 、 Logstash以及Kibana , 它们都是开源软件。不过现在还新增了一个Beats，它是一个轻量级的日志收集处理工具(Agent)，Beats占用资源少，适合于在各个服务器上搜集日志后传输给Logstash，官方也推荐此工具，目前由于原本的ELK Stack成员中加入了 Beats 工具所以已改名为Elastic Stack。
+ELK 是三个开源软件的缩写，分别为：Elasticsearch 、 Logstash 以及 Kibana , 它们都是开源软件。不过现在还新增了一个 Beats，它是一个轻量级的日志收集处理工具(Agent)，Beats 占用资源少，适合于在各个服务器上搜集日志后传输给 Logstash，官方也推荐此工具，目前由于原本的 ELK Stack 成员中加入了 Beats 工具所以已改名为 Elastic Stack。
 
 
 ## 1. 安装
@@ -44,13 +44,13 @@ $ tar -xzf elasticsearch-6.5.4.tar.gz
 
 # 这会在前台运行，需要使用 ctrl+c 退出
 $ ./bin/elasticsearch
+
 # 使用 -d 以 daemon 守护进程的方法运行
 # 使用 -p pid 将进程号保存到 pid 文件
 $ ./bin/elasticsearch -d -p pid
+
 # 可以在 `$ES_HOME/logs/` 目录下查看日志
-# 使用
-kill `cat pid`
-# 命令停止 elasticsearch
+# 使用 kill `cat pid` 命令停止 elasticsearch
 ```
 
-打开浏览器访问 `http://localhost:9200/`。
+打开浏览器访问 `http://localhost:9200/`
