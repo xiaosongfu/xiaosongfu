@@ -37,8 +37,11 @@ android.enableJetifier=true
 ### 对比示例
 
 android.support.v7.app.AppCompatActivity ==> androidx.appcompat.app.AppCompatActivity
+
 android.support.v7.widget.CardView ==> androidx.cardview.widget.CardView
+
 android.support.v7.widget.RecyclerView ==> androidx.recyclerview.widget.RecyclerView
+
 
 > 迁移前
 
