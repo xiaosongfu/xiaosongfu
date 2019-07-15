@@ -109,7 +109,7 @@ curl --unix-socket /tmp/firecracker.sock "http://localhost/machine-config"
 
 ##### 4.2 修改配置：
 
-默认的 microVM 将具有1个 vCPU 和128个 MiB RAM。如果您希望自定义（例如，2个 vCPU和1024MiB RAM），则可以在发出 InstanceStart 调用之前通过此 API 命令执行此操作：
+默认的 microVM 将具有1个 vCPU 和128MiB RAM。如果您希望自定义（例如，2个 vCPU 和1024MiB RAM），则可以在发出 InstanceStart 调用之前通过此 API 命令执行此操作：
 
 ```
 curl --unix-socket /tmp/firecracker.socket -i  \
