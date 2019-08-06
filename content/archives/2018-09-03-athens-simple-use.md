@@ -9,9 +9,12 @@ categories: ["go"]
 >  
 1、本地简单试用 Athens Proxy
 2、使用 Docker 部署 Athens Proxy
-3、Athens 架构
+3. 启用代理功能
+4、Athens 架构
 
 ---
+
+Anthens 是 Go 社区的一个开源依赖管理工具，它能够聚合管理依赖包。能够对接 github，JFrog GoCenter，JFrog Artifactory。所以你只需要标注你所有的依赖包的地址，go get 会按照先近后远的顺序帮你下载依赖，并且缓存在本地 mods 目录。
 
 ### 1、本地简单试用 Athens Proxy
 
@@ -130,6 +133,18 @@ athens-storage/
 go module 机制会将下载的 modules 缓存在 $GOPATH/pkg/mod 目录下，在本机查看一下该目录
 
 ![](https://lollipop.xiaosongfu.com/blog/201809/athens.png)
+
+### 3. 启用代理功能
+
+Athens 能够聚合管理依赖包。能够对接 github，JFrog GoCenter，JFrog Artifactory。只需要简单设置
+
+```
+docker run \
+  -e ATHENS_DOWNLOAD_MODE=sync \
+  -e ATHENS_DOWNLOAD_URL=https://gocenter.io \
+  ...
+
+```
 
 ---
 
