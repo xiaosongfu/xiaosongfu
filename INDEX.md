@@ -45,6 +45,7 @@
 * draft - 草稿
     * 2017-07-08-Android-iOS-设计规范基础
     * 2017-07-31-Android-Library-开发手记
+    
     * 2018-01-10-git-submodule-简记
     * 2018-02-26-dep-vgo-dep
     * 2018-02-26-dep-vgo-vgo
@@ -63,6 +64,7 @@
     * 2018-12-27-Flutter-json-序列化与反序列化
     * 2018-12-29-dart-异步编程
     * 2018-12-29-ubuntu-xfce-vnc 远程桌面
+    
     * 2019-01-16-本地创建、开发、测试、部署 AWS Lambda - 通过 aws-sam-cli
     * 2019-01-16-本地创建、开发、测试、部署 Azure Functions - 通过 azure-functions-core-tools
     * 2019-01-21-安装 harbor
@@ -85,3 +87,4 @@
     * 2019-01-31-安装多机器 drone
     * 2019-01-31-使用 docker 部署 nexus 服务
     * 2019-01-31-自动拼接 url 下载 github 特定项目的 release
+    * 2019-08-07-迁移到-Gradle-Kotlin-DSL
