@@ -1,6 +1,6 @@
 * archives - 归档
     * 2019
-        * 
+        * 2019-02-21-Android Studio 彻底清除代理设置
     
     * 2018
         * 2018-02-24-安装 golang.org/x/ 下的 package
@@ -26,7 +26,7 @@
         * 2017-01-07-为 SpringBoot 应用加持 Sentry
         * 2017-01-10-Macaca + uirecorder 实现 Android 自动化测试
         * 2017-02-21-Android 项目必备文档
-        * 2017-02-21-Jenkins-Gradle-for-CI
+        * 2017-02-21-Jenkins Gradle for CI
         * 2017-07-31-使用命令行安装 Android SDK
         * 2017-12-07-docker push 简记
         * 2017-12-07-质量检测平台 SonarQube：1 使用 Docker 搭建服务器
@@ -43,27 +43,27 @@
 ---
 
 * draft - 草稿
-    * 2017-07-08-Android-iOS-设计规范基础
-    * 2017-07-31-Android-Library-开发手记
+    * 2017-07-08-Android iOS 设计规范基础
+    * 2017-07-31-Android Library 开发手记
     
-    * 2018-01-10-git-submodule-简记
-    * 2018-02-26-dep-vgo-dep
-    * 2018-02-26-dep-vgo-vgo
-    * 2018-06-12-go-swagger-集成方法
-    * 2018-07-10-Flutter-应用程序的基本结构
-    * 2018-08-17-linux-install-sslocal
-    * 2018-11-15-Android-日志打印
-    * 2018-11-20-在命令行中使用-gradle
-    * 2018-11-22-迁移-Support-Library-到-AndroidX
-    * 2018-11-22-Android-SDK-目录简介
-    * 2018-11-27-简单使用-RocketMQ
-    * 2018-11-29-Android-layout-CardView-的使用
-    * 2018-11-29-Android-layout-RecycleView-的使用
-    * 2018-12-04-Android-显示-Gif-图片
-    * 2018-12-07-Android-Launcher-开发
-    * 2018-12-27-Flutter-json-序列化与反序列化
-    * 2018-12-29-dart-异步编程
-    * 2018-12-29-ubuntu-xfce-vnc 远程桌面
+    * 2018-01-10-git submodule 简记
+    * 2018-02-26-dep vgo dep
+    * 2018-02-26-dep vgo vgo
+    * 2018-06-12-go swagger 集成方法
+    * 2018-07-10-Flutter 应用程序的基本结构
+    * 2018-08-17-linux install sslocal
+    * 2018-11-15-Android 日志打印
+    * 2018-11-20-在命令行中使用 gradle
+    * 2018-11-22-迁移 Support Library 到 AndroidX
+    * 2018-11-22-Android SDK 目录简介
+    * 2018-11-27-简单使用 RocketMQ
+    * 2018-11-29-Android layout CardView 的使用
+    * 2018-11-29-Android layout RecycleView 的使用
+    * 2018-12-04-Android 显示 Gif 图片
+    * 2018-12-07-Android Launcher 开发
+    * 2018-12-27-Flutter json 序列化与反序列化
+    * 2018-12-29-dart 异步编程
+    * 2018-12-29-ubuntu xfce vnc 远程桌面
     
     * 2019-01-16-本地创建、开发、测试、部署 AWS Lambda - 通过 aws-sam-cli
     * 2019-01-16-本地创建、开发、测试、部署 Azure Functions - 通过 azure-functions-core-tools
@@ -87,6 +87,10 @@
     * 2019-01-31-安装多机器 drone
     * 2019-01-31-使用 docker 部署 nexus 服务
     * 2019-01-31-自动拼接 url 下载 github 特定项目的 release
-    * 2019-08-07-迁移到-Gradle-Kotlin-DSL
+    * 2019-08-07-迁移到 Gradle Kotlin DSL
     * 2019-08-14-在不同文件夹保存 kotlin 和 java 文件
-    
+    * 2019-08-20-使用 GoReleaser 自动发布项目
+    * 2019-08-21- 安装和使用 Rancher
+    * 2019-08-23-maven 项目上传私有仓库
+    * 2019-08-23-gradle 项目上传私有仓库
+    * 2019-08-23-配置 maven.aliyun.com 加速构建
