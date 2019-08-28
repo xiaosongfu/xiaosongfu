@@ -94,3 +94,4 @@
     * 2019-08-23-maven 项目上传私有仓库
     * 2019-08-23-gradle 项目上传私有仓库
     * 2019-08-23-配置 maven.aliyun.com 加速构建
+    * 2019-08-23-Android Studio于2015年从 mavenCentral 迁移到 jcenter.md
