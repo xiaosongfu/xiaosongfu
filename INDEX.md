@@ -90,9 +90,11 @@
     * 2019-08-07-迁移到 Gradle Kotlin DSL
     * 2019-08-14-在不同文件夹保存 kotlin 和 java 文件
     * 2019-08-20-使用 GoReleaser 自动发布项目
-    * 2019-08-21- 安装和使用 Rancher
+    * 2019-08-21-安装和使用 Rancher
     * 2019-08-23-maven 项目上传私有仓库
     * 2019-08-23-gradle 项目上传私有仓库
     * 2019-08-23-配置 maven.aliyun.com 加速构建
     * 2019-08-23-Android Studio于2015年从 mavenCentral 迁移到 jcenter
     * 2019-08-29-certbot 快速使用
+    * 2019-09-03-Github 开源项目贡献指南
+    * 2019-09-03-homebrew 加速
