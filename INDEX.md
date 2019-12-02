@@ -1,7 +1,7 @@
 * archives - 归档
     * 2019
-        * 2019-02-21-Android Studio 彻底清除代理设置
-    
+        * 2019-02-20-Android Studio 彻底清除代理设置
+        * 2019-11-29-浏览器中的 sip 简介
     * 2018
         * 2018-02-24-安装 golang.org/x/ 下的 package
         * 2018-04-28-自己搭建 requestbin 服务
@@ -98,3 +98,9 @@
     * 2019-08-29-certbot 快速使用
     * 2019-09-03-Github 开源项目贡献指南
     * 2019-09-03-homebrew 加速
+    * 2019-09-17-vsc-remote-develop-pack
+    * 2019-10-16-调试-vue-项目
+    * 2019-11-14-使用-docker-部署-draw.io
+    * 2019-11-30-docker-部署-postwoman
+    * 2019-11-30-linux-系统修改软件源为国内源
+    * 2019-12-02-使用-mkcert-为本地开发环境配置-https.md
