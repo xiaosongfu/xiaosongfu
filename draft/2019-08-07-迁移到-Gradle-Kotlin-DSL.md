@@ -80,6 +80,17 @@ plugins {
 }
 ```
 
+具体都有哪些可以在这里找到：`BuiltinPluginIdExtensions.kt`，比如：
+
+* java : org.gradle.java
+* application : org.gradle.application
+* java-gradle-plugin : org.gradle.java-gradle-plugin
+
+```
+inline val org.gradle.plugin.use.PluginDependenciesSpec.`application`: org.gradle.plugin.use.PluginDependencySpec
+    get() = id("org.gradle.application")
+```
+
 ### 4. 配置插件
 
 许多插件都带有**扩展**来配置它们。如果使用声明性 `plugins {}` 块应用这些插件，则可以使用 Kotlin 扩展函数来配置其扩展，与 Groovy 中的方式相同。
@@ -126,24 +137,23 @@ dependencies {
 }
 ```
 
+### 6. task
 
+```
+tasks.register<Delete>("removeLocalSzJarsCache") {
 
+}
+```
 
 ---
 
+为了保证工程可以使用这个脚本，需要在 `settings.gradle.kts` 中添加一行代码，让 Gradle 知道使用 `build.gradle.kts` 脚本来执行构建：
 
-
-为了保证工程可以使用这个脚本，需要在settings.gradle.kts中添加一行代码，让Gradle知道使用build.gradle.kts脚本构建
-
+```
 rootProject.buildFileName = "build.gradle.kts"
+```
 
-
-
-
-
-
-
-
+---
 
 ```
 buildTypes {
@@ -161,12 +171,10 @@ buildTypes {
 }
 ```
 
-
+```
 implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+```
 
-
-
-
-
+---
 
 完整的参考：https://github.com/DroidKaigi/conference-app-2018/blob/master/app/build.gradle.kts
